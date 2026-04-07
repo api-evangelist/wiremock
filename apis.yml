@@ -4,8 +4,7 @@ url: >-
 apis:
   - aid: wiremock:wiremock
     name: WireMock
-    tags:
-      - API
+    tags: []
     humanURL: https://wiremock.org/
     properties:
       - url: https://wiremock.org/
@@ -16,8 +15,8 @@ apis:
       are ...
 name: WireMock
 tags:
-  - Mocking
   - Mock Server
+  - Mocking
   - Platform
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
