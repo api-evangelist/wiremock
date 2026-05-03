@@ -1,0 +1,50 @@
+{
+  "request": {
+    "method": "GET",
+    "urlPath": "/api/v1/users",
+    "queryParameters": {
+      "page": {
+        "equalTo": "1"
+      }
+    },
+    "headers": {
+      "Accept": {
+        "contains": "application/json"
+      }
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json",
+      "X-Total-Count": "42"
+    },
+    "jsonBody": {
+      "users": [
+        {
+          "id": "usr-001",
+          "name": "Alice Johnson",
+          "email": "alice@example.com",
+          "role": "admin"
+        },
+        {
+          "id": "usr-002",
+          "name": "Bob Smith",
+          "email": "bob@example.com",
+          "role": "developer"
+        }
+      ],
+      "page": 1,
+      "pageSize": 20,
+      "total": 42
+    },
+    "fixedDelayMilliseconds": 50
+  },
+  "name": "List Users - Page 1",
+  "priority": 1,
+  "metadata": {
+    "category": "User Management",
+    "owner": "qa-team",
+    "tags": ["users", "list", "pagination"]
+  }
+}

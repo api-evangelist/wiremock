@@ -1,0 +1,32 @@
+{
+  "name": "Stub Mapping",
+  "description": "Structure of a WireMock stub mapping object.",
+  "fields": [
+    { "name": "id", "type": "string (UUID)", "required": false, "description": "Stub mapping UUID (generated if not provided)." },
+    { "name": "uuid", "type": "string (UUID)", "required": false, "description": "Alias for id." },
+    { "name": "name", "type": "string", "required": false, "description": "Human-readable stub name." },
+    { "name": "priority", "type": "integer", "required": false, "description": "Match priority (lower = higher priority)." },
+    { "name": "request", "type": "object", "required": true, "description": "Request pattern containing method, url/urlPath/urlPattern, headers, queryParameters, and bodyPatterns." },
+    { "name": "request.method", "type": "string", "required": false, "description": "HTTP method: GET, POST, PUT, DELETE, PATCH, ANY, etc." },
+    { "name": "request.url", "type": "string", "required": false, "description": "Exact URL match (path + query string)." },
+    { "name": "request.urlPath", "type": "string", "required": false, "description": "Exact URL path match (no query string)." },
+    { "name": "request.urlPattern", "type": "string", "required": false, "description": "Regex URL match." },
+    { "name": "request.urlPathPattern", "type": "string", "required": false, "description": "Regex URL path match." },
+    { "name": "request.headers", "type": "object", "required": false, "description": "Header matchers." },
+    { "name": "request.queryParameters", "type": "object", "required": false, "description": "Query parameter matchers." },
+    { "name": "request.bodyPatterns", "type": "array<object>", "required": false, "description": "Body matchers (JSON, regex, XPath, etc.)." },
+    { "name": "response", "type": "object", "required": true, "description": "Response definition." },
+    { "name": "response.status", "type": "integer", "required": false, "description": "HTTP status code (default: 200)." },
+    { "name": "response.body", "type": "string", "required": false, "description": "Response body string." },
+    { "name": "response.jsonBody", "type": "object", "required": false, "description": "Response body as JSON object." },
+    { "name": "response.headers", "type": "object", "required": false, "description": "Response headers." },
+    { "name": "response.fixedDelayMilliseconds", "type": "integer", "required": false, "description": "Response delay in ms." },
+    { "name": "response.fault", "type": "string", "required": false, "description": "Network fault simulation." },
+    { "name": "response.proxyBaseUrl", "type": "string", "required": false, "description": "Proxy target URL." },
+    { "name": "scenarioName", "type": "string", "required": false, "description": "Scenario name for stateful behavior." },
+    { "name": "requiredScenarioState", "type": "string", "required": false, "description": "Required scenario state to match." },
+    { "name": "newScenarioState", "type": "string", "required": false, "description": "Scenario state to transition to on match." },
+    { "name": "persistent", "type": "boolean", "required": false, "description": "Whether to persist to backing store." },
+    { "name": "metadata", "type": "object", "required": false, "description": "Arbitrary metadata." }
+  ]
+}

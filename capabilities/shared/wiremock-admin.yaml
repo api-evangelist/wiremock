@@ -1,0 +1,740 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "WireMock Admin API"
+  description: >-
+    The WireMock Admin REST API provides programmatic control over a running
+    WireMock server. It manages stub mappings, the request journal, recordings,
+    stateful scenarios, and system operations.
+  tags:
+    - API Mocking
+    - Mock Server
+    - Stub Management
+    - Testing
+    - WireMock
+  created: "2026-05-03"
+  modified: "2026-05-03"
+
+binds:
+  - namespace: env
+    keys:
+      WIREMOCK_BASE_URL: WIREMOCK_BASE_URL
+
+capability:
+  consumes:
+    - type: http
+      namespace: wiremock-admin
+      baseUri: "{{env.WIREMOCK_BASE_URL}}"
+      description: "WireMock Admin REST API for managing mock server state."
+      resources:
+        - name: stub-mappings
+          path: /__admin/mappings
+          description: "Manage stub mappings that define mock API behavior."
+          operations:
+            - name: list-stub-mappings
+              method: GET
+              description: "Get All Stub Mappings"
+              inputParameters:
+                - name: limit
+                  in: query
+                  type: integer
+                  required: false
+                  description: "Maximum number of results to return."
+                - name: offset
+                  in: query
+                  type: integer
+                  required: false
+                  description: "Start index of results."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: create-stub-mapping
+              method: POST
+              description: "Create a New Stub Mapping"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  request: "{{tools.request}}"
+                  response: "{{tools.response}}"
+            - name: delete-all-stub-mappings
+              method: DELETE
+              description: "Delete All Stub Mappings"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        - name: stub-mapping-by-id
+          path: /__admin/mappings/{stubMappingId}
+          description: "Operations on a specific stub mapping by UUID."
+          operations:
+            - name: get-stub-mapping
+              method: GET
+              description: "Get Stub Mapping by ID"
+              inputParameters:
+                - name: stubMappingId
+                  in: path
+                  type: string
+                  required: true
+                  description: "The UUID of the stub mapping."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: update-stub-mapping
+              method: PUT
+              description: "Update a Stub Mapping"
+              inputParameters:
+                - name: stubMappingId
+                  in: path
+                  type: string
+                  required: true
+                  description: "The UUID of the stub mapping."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  request: "{{tools.request}}"
+                  response: "{{tools.response}}"
+            - name: delete-stub-mapping
+              method: DELETE
+              description: "Delete a Stub Mapping"
+              inputParameters:
+                - name: stubMappingId
+                  in: path
+                  type: string
+                  required: true
+                  description: "The UUID of the stub mapping."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        - name: stub-mappings-reset
+          path: /__admin/mappings/reset
+          description: "Reset stub mappings to defaults."
+          operations:
+            - name: reset-stub-mappings
+              method: POST
+              description: "Reset Stub Mappings"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        - name: stub-mappings-save
+          path: /__admin/mappings/save
+          description: "Persist stub mappings to the backing store."
+          operations:
+            - name: save-stub-mappings
+              method: POST
+              description: "Persist Stub Mappings"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        - name: stub-mappings-import
+          path: /__admin/mappings/import
+          description: "Import stub mappings."
+          operations:
+            - name: import-stub-mappings
+              method: POST
+              description: "Import Stub Mappings"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  mappings: "{{tools.mappings}}"
+
+        - name: stub-mappings-find-by-metadata
+          path: /__admin/mappings/find-by-metadata
+          description: "Find stubs by matching on their metadata."
+          operations:
+            - name: find-stub-mappings-by-metadata
+              method: POST
+              description: "Find Stub Mappings by Metadata"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  matchesJsonPath: "{{tools.matchesJsonPath}}"
+
+        - name: requests
+          path: /__admin/requests
+          description: "Access logged requests and responses in the request journal."
+          operations:
+            - name: list-requests
+              method: GET
+              description: "Get All Requests in Journal"
+              inputParameters:
+                - name: limit
+                  in: query
+                  type: string
+                  required: false
+                  description: "Maximum number of results to return."
+                - name: since
+                  in: query
+                  type: string
+                  required: false
+                  description: "Only return requests after this date (ISO 8601)."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: delete-all-requests
+              method: DELETE
+              description: "Delete All Requests in Journal"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        - name: request-by-id
+          path: /__admin/requests/{requestId}
+          description: "Operations on a specific logged request."
+          operations:
+            - name: get-request
+              method: GET
+              description: "Get Request by ID"
+              inputParameters:
+                - name: requestId
+                  in: path
+                  type: string
+                  required: true
+                  description: "The UUID of the logged request."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: delete-request
+              method: DELETE
+              description: "Delete Request by ID"
+              inputParameters:
+                - name: requestId
+                  in: path
+                  type: string
+                  required: true
+                  description: "The UUID of the logged request."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        - name: requests-find
+          path: /__admin/requests/find
+          description: "Find requests matching specified criteria."
+          operations:
+            - name: find-requests
+              method: POST
+              description: "Find Requests by Criteria"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  url: "{{tools.url}}"
+                  method: "{{tools.method}}"
+
+        - name: requests-count
+          path: /__admin/requests/count
+          description: "Count requests matching specified criteria."
+          operations:
+            - name: count-requests
+              method: POST
+              description: "Count Requests by Criteria"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  url: "{{tools.url}}"
+                  method: "{{tools.method}}"
+
+        - name: requests-unmatched
+          path: /__admin/requests/unmatched
+          description: "Get requests that weren't matched by any stub mapping."
+          operations:
+            - name: get-unmatched-requests
+              method: GET
+              description: "Find Unmatched Requests"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        - name: near-misses-request
+          path: /__admin/near-misses/request
+          description: "Find near misses for closest stub mappings."
+          operations:
+            - name: find-near-misses-for-request
+              method: POST
+              description: "Find Near Misses Matching Specific Request"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  url: "{{tools.url}}"
+                  method: "{{tools.method}}"
+
+        - name: near-misses-request-pattern
+          path: /__admin/near-misses/request-pattern
+          description: "Find near misses for closest logged requests to a pattern."
+          operations:
+            - name: find-near-misses-for-pattern
+              method: POST
+              description: "Find Near Misses Matching Request Pattern"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  urlPattern: "{{tools.urlPattern}}"
+                  method: "{{tools.method}}"
+
+        - name: recordings-start
+          path: /__admin/recordings/start
+          description: "Begin recording stub mappings from live traffic."
+          operations:
+            - name: start-recording
+              method: POST
+              description: "Start Recording"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  targetBaseUrl: "{{tools.targetBaseUrl}}"
+
+        - name: recordings-stop
+          path: /__admin/recordings/stop
+          description: "End recording of stub mappings."
+          operations:
+            - name: stop-recording
+              method: POST
+              description: "Stop Recording"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        - name: recordings-status
+          path: /__admin/recordings/status
+          description: "Get the current recording status."
+          operations:
+            - name: get-recording-status
+              method: GET
+              description: "Get Recording Status"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        - name: recordings-snapshot
+          path: /__admin/recordings/snapshot
+          description: "Take a snapshot recording of current state."
+          operations:
+            - name: take-snapshot
+              method: POST
+              description: "Take a Snapshot Recording"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  targetBaseUrl: "{{tools.targetBaseUrl}}"
+
+        - name: scenarios
+          path: /__admin/scenarios
+          description: "Manage stateful scenarios."
+          operations:
+            - name: list-scenarios
+              method: GET
+              description: "Get All Scenarios"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        - name: scenarios-reset
+          path: /__admin/scenarios/reset
+          description: "Reset state of all scenarios."
+          operations:
+            - name: reset-scenarios
+              method: POST
+              description: "Reset the State of All Scenarios"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        - name: settings
+          path: /__admin/settings
+          description: "Configure global WireMock settings."
+          operations:
+            - name: update-settings
+              method: POST
+              description: "Update Global Settings"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  fixedDelay: "{{tools.fixedDelay}}"
+
+        - name: system-reset
+          path: /__admin/reset
+          description: "Reset mappings and request journal."
+          operations:
+            - name: reset-all
+              method: POST
+              description: "Reset Mappings and Request Journal"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        - name: system-shutdown
+          path: /__admin/shutdown
+          description: "Shutdown the WireMock server."
+          operations:
+            - name: shutdown-server
+              method: POST
+              description: "Shutdown the WireMock Server"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+  exposes:
+    - type: rest
+      port: 8100
+      namespace: wiremock-admin-api
+      resources:
+        - path: /v1/mappings
+          name: stub-mappings
+          description: "Manage stub mappings."
+          operations:
+            - method: GET
+              name: list-stub-mappings
+              description: "List all stub mappings."
+              call: "wiremock-admin.list-stub-mappings"
+              with:
+                limit: "rest.limit"
+                offset: "rest.offset"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: POST
+              name: create-stub-mapping
+              description: "Create a new stub mapping."
+              call: "wiremock-admin.create-stub-mapping"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: DELETE
+              name: delete-all-stub-mappings
+              description: "Delete all stub mappings."
+              call: "wiremock-admin.delete-all-stub-mappings"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/mappings/{stubMappingId}
+          name: stub-mapping-by-id
+          description: "Manage a specific stub mapping."
+          operations:
+            - method: GET
+              name: get-stub-mapping
+              description: "Get a stub mapping by ID."
+              call: "wiremock-admin.get-stub-mapping"
+              with:
+                stubMappingId: "rest.stubMappingId"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: PUT
+              name: update-stub-mapping
+              description: "Update a stub mapping."
+              call: "wiremock-admin.update-stub-mapping"
+              with:
+                stubMappingId: "rest.stubMappingId"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: DELETE
+              name: delete-stub-mapping
+              description: "Delete a stub mapping."
+              call: "wiremock-admin.delete-stub-mapping"
+              with:
+                stubMappingId: "rest.stubMappingId"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/requests
+          name: requests
+          description: "Access the request journal."
+          operations:
+            - method: GET
+              name: list-requests
+              description: "List all logged requests."
+              call: "wiremock-admin.list-requests"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/requests/{requestId}
+          name: request-by-id
+          description: "Access a specific logged request."
+          operations:
+            - method: GET
+              name: get-request
+              description: "Get a logged request by ID."
+              call: "wiremock-admin.get-request"
+              with:
+                requestId: "rest.requestId"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/scenarios
+          name: scenarios
+          description: "Manage stateful scenarios."
+          operations:
+            - method: GET
+              name: list-scenarios
+              description: "List all scenarios."
+              call: "wiremock-admin.list-scenarios"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9100
+      namespace: wiremock-admin-mcp
+      transport: http
+      tools:
+        - name: list-stub-mappings
+          description: "List all stub mappings registered with the WireMock server."
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "wiremock-admin.list-stub-mappings"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: create-stub-mapping
+          description: "Create a new stub mapping to mock an API endpoint."
+          hints:
+            readOnly: false
+            destructive: false
+          call: "wiremock-admin.create-stub-mapping"
+          with:
+            request: "tools.request"
+            response: "tools.response"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-stub-mapping
+          description: "Get a specific stub mapping by its UUID."
+          hints:
+            readOnly: true
+          call: "wiremock-admin.get-stub-mapping"
+          with:
+            stubMappingId: "tools.stubMappingId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: update-stub-mapping
+          description: "Update an existing stub mapping."
+          hints:
+            readOnly: false
+            idempotent: true
+          call: "wiremock-admin.update-stub-mapping"
+          with:
+            stubMappingId: "tools.stubMappingId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: delete-stub-mapping
+          description: "Delete a specific stub mapping by UUID."
+          hints:
+            readOnly: false
+            destructive: true
+            idempotent: true
+          call: "wiremock-admin.delete-stub-mapping"
+          with:
+            stubMappingId: "tools.stubMappingId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-requests
+          description: "List all requests logged in the request journal."
+          hints:
+            readOnly: true
+          call: "wiremock-admin.list-requests"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: find-requests
+          description: "Find logged requests matching specific criteria."
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "wiremock-admin.find-requests"
+          with:
+            url: "tools.url"
+            method: "tools.method"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: count-requests
+          description: "Count logged requests matching specific criteria."
+          hints:
+            readOnly: true
+          call: "wiremock-admin.count-requests"
+          with:
+            url: "tools.url"
+            method: "tools.method"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-unmatched-requests
+          description: "Get requests that did not match any stub mapping."
+          hints:
+            readOnly: true
+          call: "wiremock-admin.get-unmatched-requests"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: find-near-misses-for-request
+          description: "Find near misses — closest stub mappings to a specific request."
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "wiremock-admin.find-near-misses-for-request"
+          with:
+            url: "tools.url"
+            method: "tools.method"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: start-recording
+          description: "Start recording incoming requests as stub mappings from a target URL."
+          hints:
+            readOnly: false
+            destructive: false
+          call: "wiremock-admin.start-recording"
+          with:
+            targetBaseUrl: "tools.targetBaseUrl"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: stop-recording
+          description: "Stop recording and retrieve all captured stub mappings."
+          hints:
+            readOnly: false
+          call: "wiremock-admin.stop-recording"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-recording-status
+          description: "Get the current recording status (NeverStarted, Recording, or Stopped)."
+          hints:
+            readOnly: true
+          call: "wiremock-admin.get-recording-status"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-scenarios
+          description: "List all stateful scenarios and their current state."
+          hints:
+            readOnly: true
+          call: "wiremock-admin.list-scenarios"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: reset-scenarios
+          description: "Reset all scenario states to their initial state."
+          hints:
+            readOnly: false
+            idempotent: true
+          call: "wiremock-admin.reset-scenarios"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: reset-all
+          description: "Reset all stub mappings and the request journal to default state."
+          hints:
+            readOnly: false
+            destructive: true
+            idempotent: true
+          call: "wiremock-admin.reset-all"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: update-settings
+          description: "Update global WireMock server settings including response delays."
+          hints:
+            readOnly: false
+            idempotent: true
+          call: "wiremock-admin.update-settings"
+          with:
+            fixedDelay: "tools.fixedDelay"
+          outputParameters:
+            - type: object
+              mapping: "$."

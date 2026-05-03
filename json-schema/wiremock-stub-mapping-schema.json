@@ -1,0 +1,141 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/wiremock/blob/main/json-schema/wiremock-stub-mapping-schema.json",
+  "title": "Stub Mapping",
+  "description": "A WireMock stub mapping that defines how the mock server responds to matched incoming requests.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "The UUID identifier for this stub mapping."
+    },
+    "uuid": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Alias for the stub mapping UUID."
+    },
+    "name": {
+      "type": "string",
+      "description": "A human-readable name for this stub mapping."
+    },
+    "priority": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Priority of this stub mapping (lower number = higher priority). Used when multiple stubs match."
+    },
+    "request": {
+      "type": "object",
+      "description": "The request pattern that incoming requests must match.",
+      "properties": {
+        "method": {
+          "type": "string",
+          "enum": ["GET", "POST", "PUT", "DELETE", "PATCH", "HEAD", "OPTIONS", "TRACE", "ANY"],
+          "description": "The HTTP method to match."
+        },
+        "url": {
+          "type": "string",
+          "description": "Exact URL to match (including query string)."
+        },
+        "urlPath": {
+          "type": "string",
+          "description": "Exact URL path to match (ignoring query string)."
+        },
+        "urlPattern": {
+          "type": "string",
+          "description": "Regex pattern to match against the full URL."
+        },
+        "urlPathPattern": {
+          "type": "string",
+          "description": "Regex pattern to match against the URL path only."
+        },
+        "headers": {
+          "type": "object",
+          "description": "Request headers that must be present and match."
+        },
+        "queryParameters": {
+          "type": "object",
+          "description": "Query parameters that must be present and match."
+        },
+        "bodyPatterns": {
+          "type": "array",
+          "items": { "type": "object" },
+          "description": "Patterns that the request body must match."
+        }
+      }
+    },
+    "response": {
+      "type": "object",
+      "description": "The response to return when a request matches.",
+      "properties": {
+        "status": {
+          "type": "integer",
+          "description": "The HTTP status code to return."
+        },
+        "statusMessage": {
+          "type": "string",
+          "description": "The HTTP status message."
+        },
+        "body": {
+          "type": "string",
+          "description": "The response body as a string."
+        },
+        "jsonBody": {
+          "type": "object",
+          "description": "The response body as a JSON object (automatically serialized)."
+        },
+        "base64Body": {
+          "type": "string",
+          "description": "The response body as a base64-encoded string."
+        },
+        "bodyFileName": {
+          "type": "string",
+          "description": "Path to a file containing the response body."
+        },
+        "headers": {
+          "type": "object",
+          "description": "Response headers to include."
+        },
+        "fixedDelayMilliseconds": {
+          "type": "integer",
+          "description": "Fixed delay in milliseconds before the response is sent."
+        },
+        "fault": {
+          "type": "string",
+          "enum": ["CONNECTION_RESET_BY_PEER", "EMPTY_RESPONSE", "MALFORMED_RESPONSE_CHUNK", "RANDOM_DATA_THEN_CLOSE"],
+          "description": "Simulate a network fault instead of returning a normal response."
+        },
+        "transformers": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "List of response transformer names to apply."
+        },
+        "proxyBaseUrl": {
+          "type": "string",
+          "description": "Base URL to proxy requests to (for proxy stubs)."
+        }
+      }
+    },
+    "scenarioName": {
+      "type": "string",
+      "description": "The name of the scenario this stub participates in for stateful behavior."
+    },
+    "requiredScenarioState": {
+      "type": "string",
+      "description": "The scenario state that must be active for this stub to match."
+    },
+    "newScenarioState": {
+      "type": "string",
+      "description": "The scenario state to transition to after this stub is matched."
+    },
+    "persistent": {
+      "type": "boolean",
+      "description": "Whether this stub mapping should be persisted to the backing store."
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Arbitrary metadata attached to the stub mapping for categorization."
+    }
+  },
+  "required": ["request", "response"]
+}

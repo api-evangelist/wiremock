@@ -1,0 +1,72 @@
+extends: spectral:oas
+rules:
+  # WireMock Admin API Spectral Rules
+  # These rules enforce conventions specific to the WireMock Admin API
+
+  wiremock-operation-summary-title-case:
+    description: All operation summaries must use Title Case.
+    message: "Operation summary '{{value}}' must use Title Case."
+    severity: warn
+    given: "$.paths[*][*].summary"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[A-Z][a-z]*( [A-Z a-z]+)*$"
+
+  wiremock-admin-path-prefix:
+    description: All WireMock admin paths must start with /__admin/.
+    message: "WireMock admin path '{{property}}' should start with /__admin/."
+    severity: warn
+    given: "$.paths"
+    then:
+      field: "@key"
+      function: pattern
+      functionOptions:
+        match: "^/__admin/"
+
+  wiremock-uuid-path-param:
+    description: Path parameters representing IDs should use UUID format examples.
+    message: "Path parameter '{{value}}' should document UUID format."
+    severity: info
+    given: "$.paths[*].parameters[?(@.in == 'path')]"
+    then:
+      - field: schema.type
+        function: truthy
+      - field: example
+        function: truthy
+
+  wiremock-response-200-defined:
+    description: All GET operations must define a 200 response.
+    message: "GET operation at '{{path}}' should define a 200 response."
+    severity: warn
+    given: "$.paths[*].get"
+    then:
+      field: responses.200
+      function: truthy
+
+  wiremock-operation-tags:
+    description: All operations should have at least one tag.
+    message: "Operation is missing tags."
+    severity: warn
+    given: "$.paths[*][get,post,put,delete,patch]"
+    then:
+      field: tags
+      function: truthy
+
+  wiremock-json-request-body:
+    description: POST/PUT operations that accept a body should specify application/json content type.
+    message: "Request body should specify application/json content type."
+    severity: warn
+    given: "$.paths[*][post,put].requestBody.content"
+    then:
+      field: application/json
+      function: truthy
+
+  wiremock-no-empty-descriptions:
+    description: Operations should have descriptions when complex behavior is involved.
+    message: "Consider adding a description for this operation."
+    severity: info
+    given: "$.paths[*][post,put,delete]"
+    then:
+      field: description
+      function: truthy

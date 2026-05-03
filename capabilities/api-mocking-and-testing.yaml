@@ -1,0 +1,404 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "WireMock API Mocking and Testing"
+  description: >-
+    Unified capability for API mocking and integration testing workflows using
+    WireMock. Enables developers and QA engineers to create, manage, and verify
+    mock API stubs; record and replay real traffic; debug unmatched requests;
+    and manage stateful test scenarios — all through a single orchestrated interface.
+  tags:
+    - API Mocking
+    - Integration Testing
+    - Mock Server
+    - Stubs
+    - Testing
+    - WireMock
+  created: "2026-05-03"
+  modified: "2026-05-03"
+
+binds:
+  - namespace: env
+    keys:
+      WIREMOCK_BASE_URL: WIREMOCK_BASE_URL
+
+capability:
+  consumes:
+    - import: wiremock-admin
+      location: ./shared/wiremock-admin.yaml
+
+  exposes:
+    - type: rest
+      port: 8080
+      namespace: wiremock-mocking-api
+      description: "Unified REST API for WireMock API mocking and integration testing."
+      resources:
+        - path: /v1/mappings
+          name: stub-mappings
+          description: "Create and manage stub mappings that define mock API behavior."
+          operations:
+            - method: GET
+              name: list-stub-mappings
+              description: "List all registered stub mappings."
+              call: "wiremock-admin.list-stub-mappings"
+              with:
+                limit: "rest.limit"
+                offset: "rest.offset"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: POST
+              name: create-stub-mapping
+              description: "Register a new stub mapping to mock an API endpoint."
+              call: "wiremock-admin.create-stub-mapping"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: DELETE
+              name: delete-all-stub-mappings
+              description: "Remove all stub mappings."
+              call: "wiremock-admin.delete-all-stub-mappings"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/mappings/{stubMappingId}
+          name: stub-mapping
+          description: "Manage a specific stub mapping."
+          operations:
+            - method: GET
+              name: get-stub-mapping
+              description: "Get a stub mapping by UUID."
+              call: "wiremock-admin.get-stub-mapping"
+              with:
+                stubMappingId: "rest.stubMappingId"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: PUT
+              name: update-stub-mapping
+              description: "Update a stub mapping."
+              call: "wiremock-admin.update-stub-mapping"
+              with:
+                stubMappingId: "rest.stubMappingId"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: DELETE
+              name: delete-stub-mapping
+              description: "Delete a stub mapping."
+              call: "wiremock-admin.delete-stub-mapping"
+              with:
+                stubMappingId: "rest.stubMappingId"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/requests
+          name: requests
+          description: "Access the request journal."
+          operations:
+            - method: GET
+              name: list-requests
+              description: "List all requests logged in the journal."
+              call: "wiremock-admin.list-requests"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: DELETE
+              name: delete-all-requests
+              description: "Clear the request journal."
+              call: "wiremock-admin.delete-all-requests"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/requests/{requestId}
+          name: request
+          description: "Access a specific logged request."
+          operations:
+            - method: GET
+              name: get-request
+              description: "Get a specific logged request by UUID."
+              call: "wiremock-admin.get-request"
+              with:
+                requestId: "rest.requestId"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/requests/unmatched
+          name: unmatched-requests
+          description: "Inspect unmatched requests for debugging."
+          operations:
+            - method: GET
+              name: get-unmatched-requests
+              description: "Get requests that didn't match any stub."
+              call: "wiremock-admin.get-unmatched-requests"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/scenarios
+          name: scenarios
+          description: "Manage stateful test scenarios."
+          operations:
+            - method: GET
+              name: list-scenarios
+              description: "List all scenarios and their current state."
+              call: "wiremock-admin.list-scenarios"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/recordings/status
+          name: recording-status
+          description: "Check recording status."
+          operations:
+            - method: GET
+              name: get-recording-status
+              description: "Get the current recording status."
+              call: "wiremock-admin.get-recording-status"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9090
+      namespace: wiremock-mocking-mcp
+      transport: http
+      description: "MCP server for AI-assisted API mocking, test stub management, and request verification."
+      tools:
+        - name: list-stub-mappings
+          description: "List all registered stub mappings. Use this to see what API endpoints are currently mocked."
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "wiremock-admin.list-stub-mappings"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: create-stub-mapping
+          description: "Create a new stub mapping to mock an API endpoint with a specific request pattern and response."
+          hints:
+            readOnly: false
+            destructive: false
+          call: "wiremock-admin.create-stub-mapping"
+          with:
+            request: "tools.request"
+            response: "tools.response"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: get-stub-mapping
+          description: "Get a specific stub mapping by its UUID to inspect its request/response configuration."
+          hints:
+            readOnly: true
+          call: "wiremock-admin.get-stub-mapping"
+          with:
+            stubMappingId: "tools.stubMappingId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: update-stub-mapping
+          description: "Update an existing stub mapping to change its request matcher or response."
+          hints:
+            readOnly: false
+            idempotent: true
+          call: "wiremock-admin.update-stub-mapping"
+          with:
+            stubMappingId: "tools.stubMappingId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: delete-stub-mapping
+          description: "Remove a specific stub mapping by UUID."
+          hints:
+            readOnly: false
+            destructive: true
+            idempotent: true
+          call: "wiremock-admin.delete-stub-mapping"
+          with:
+            stubMappingId: "tools.stubMappingId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: import-stub-mappings
+          description: "Import a batch of stub mappings from a JSON definition."
+          hints:
+            readOnly: false
+          call: "wiremock-admin.import-stub-mappings"
+          with:
+            mappings: "tools.mappings"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: find-stub-mappings-by-metadata
+          description: "Find stub mappings that match specific metadata criteria."
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "wiremock-admin.find-stub-mappings-by-metadata"
+          with:
+            matchesJsonPath: "tools.matchesJsonPath"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: list-requests
+          description: "List all requests logged in the request journal since the last reset."
+          hints:
+            readOnly: true
+          call: "wiremock-admin.list-requests"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: find-requests
+          description: "Find logged requests matching specific URL and method criteria."
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "wiremock-admin.find-requests"
+          with:
+            url: "tools.url"
+            method: "tools.method"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: count-requests
+          description: "Count how many requests matching specific criteria were received."
+          hints:
+            readOnly: true
+          call: "wiremock-admin.count-requests"
+          with:
+            url: "tools.url"
+            method: "tools.method"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: get-unmatched-requests
+          description: "Get requests that did not match any stub mapping — useful for debugging missing stubs."
+          hints:
+            readOnly: true
+          call: "wiremock-admin.get-unmatched-requests"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: find-near-misses-for-request
+          description: "Find stub mappings that are closest to matching a specific request — helps debug near misses."
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "wiremock-admin.find-near-misses-for-request"
+          with:
+            url: "tools.url"
+            method: "tools.method"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: find-near-misses-for-pattern
+          description: "Find logged requests closest to matching a specific request pattern."
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "wiremock-admin.find-near-misses-for-pattern"
+          with:
+            urlPattern: "tools.urlPattern"
+            method: "tools.method"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: start-recording
+          description: "Start recording real API traffic as stub mappings from a target base URL."
+          hints:
+            readOnly: false
+            destructive: false
+          call: "wiremock-admin.start-recording"
+          with:
+            targetBaseUrl: "tools.targetBaseUrl"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: stop-recording
+          description: "Stop recording and retrieve the captured stub mappings."
+          hints:
+            readOnly: false
+          call: "wiremock-admin.stop-recording"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: get-recording-status
+          description: "Check whether WireMock is currently recording (NeverStarted, Recording, or Stopped)."
+          hints:
+            readOnly: true
+          call: "wiremock-admin.get-recording-status"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: take-snapshot
+          description: "Take a snapshot of current request traffic as stub mappings."
+          hints:
+            readOnly: false
+          call: "wiremock-admin.take-snapshot"
+          with:
+            targetBaseUrl: "tools.targetBaseUrl"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: list-scenarios
+          description: "List all stateful scenarios and their current state for stateful mock testing."
+          hints:
+            readOnly: true
+          call: "wiremock-admin.list-scenarios"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: reset-scenarios
+          description: "Reset all scenario states back to their initial state."
+          hints:
+            readOnly: false
+            idempotent: true
+          call: "wiremock-admin.reset-scenarios"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: update-settings
+          description: "Update global WireMock server settings such as fixed response delay."
+          hints:
+            readOnly: false
+            idempotent: true
+          call: "wiremock-admin.update-settings"
+          with:
+            fixedDelay: "tools.fixedDelay"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: reset-all
+          description: "Reset all stub mappings and the request journal to clean default state."
+          hints:
+            readOnly: false
+            destructive: true
+            idempotent: true
+          call: "wiremock-admin.reset-all"
+          outputParameters:
+            - type: object
+              mapping: "$."

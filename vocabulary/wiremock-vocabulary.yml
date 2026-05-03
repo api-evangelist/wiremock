@@ -1,0 +1,132 @@
+vocabulary:
+  name: WireMock Vocabulary
+  description: >-
+    Domain vocabulary for WireMock covering API mocking concepts, stub mapping
+    configuration, request verification, stateful testing, traffic recording,
+    and the WireMock admin API operations.
+  version: '2026-05-03'
+  tags:
+    - API Mocking
+    - Integration Testing
+    - Mock Server
+    - Testing
+    - WireMock
+
+  domains:
+    - name: Core Mocking Concepts
+      description: Fundamental terms in WireMock's API mocking model.
+      terms:
+        - term: Stub Mapping
+          definition: >-
+            A configuration that defines how WireMock should respond when
+            an incoming request matches a specific pattern. Consists of a
+            request pattern and a response definition.
+        - term: Request Pattern
+          definition: >-
+            A set of criteria that an incoming HTTP request must satisfy
+            to match a stub mapping, including method, URL, headers,
+            query parameters, and body patterns.
+        - term: Response Definition
+          definition: >-
+            The HTTP response WireMock returns when a request matches a
+            stub, including status code, headers, body, and optional delay.
+        - term: URL Matching
+          definition: >-
+            The process of comparing an incoming request URL against stub
+            mapping criteria using exact match, path match, or regex patterns.
+        - term: Body Pattern
+          definition: >-
+            A matching criterion applied to the request body, supporting
+            JSON path, XPath, regex, or equality matching strategies.
+        - term: Priority
+          definition: >-
+            A numeric value (lower = higher priority) that determines which
+            stub mapping is used when multiple stubs match the same request.
+
+    - name: Request Verification
+      description: Terms related to verifying requests made to WireMock.
+      terms:
+        - term: Request Journal
+          definition: >-
+            A log of all HTTP requests received by WireMock since the last
+            reset, enabling verification that expected API calls were made.
+        - term: Serve Event
+          definition: >-
+            A record in the request journal representing a single incoming
+            request and the stub mapping (if any) that handled it.
+        - term: Unmatched Request
+          definition: >-
+            A request received by WireMock that did not match any registered
+            stub mapping, resulting in a 404 or configured error response.
+        - term: Near Miss
+          definition: >-
+            A stub mapping that is almost-but-not-quite matching a received
+            request, used for debugging misconfigurations.
+
+    - name: Recording and Playback
+      description: Terms related to WireMock's record-and-replay capabilities.
+      terms:
+        - term: Recording
+          definition: >-
+            The process of capturing real HTTP traffic through WireMock's
+            proxy mode and converting it into reusable stub mappings.
+        - term: Snapshot
+          definition: >-
+            A point-in-time capture of current request journal entries
+            as stub mappings.
+        - term: Target Base URL
+          definition: >-
+            The upstream service URL that WireMock proxies requests to
+            during recording mode.
+        - term: Playback
+          definition: >-
+            The use of recorded stub mappings to simulate the behavior of
+            the upstream service without making real network calls.
+
+    - name: Stateful Testing
+      description: Terms related to modeling stateful behavior in WireMock.
+      terms:
+        - term: Scenario
+          definition: >-
+            A named state machine in WireMock that enables modeling stateful
+            behavior where different stubs activate based on the current state.
+        - term: Scenario State
+          definition: >-
+            A named state within a scenario (e.g., Started, Item Added,
+            Checkout Complete) that controls which stub mappings are active.
+        - term: Required Scenario State
+          definition: >-
+            The scenario state that must be active for a particular stub
+            mapping to be eligible to match incoming requests.
+        - term: New Scenario State
+          definition: >-
+            The scenario state that WireMock transitions to after a stub
+            mapping with this field set is successfully matched.
+
+    - name: Deployment and Integration
+      description: Terms related to WireMock deployment options and integrations.
+      terms:
+        - term: Standalone Mode
+          definition: >-
+            WireMock running as an independent server process, accessible
+            via its admin API and configurable via JSON files.
+        - term: Embedded Mode
+          definition: >-
+            WireMock running within a Java test (JUnit or TestNG) as an
+            in-process mock server controlled by the test code.
+        - term: Docker Mode
+          definition: >-
+            WireMock running as a containerized service using the official
+            wiremock/wiremock Docker image for CI/CD and Kubernetes environments.
+        - term: Admin API
+          definition: >-
+            The REST API exposed at /__admin/ that provides programmatic
+            control over a running WireMock server instance.
+        - term: Transformer
+          definition: >-
+            A WireMock extension that post-processes responses before they
+            are returned, enabling dynamic content generation.
+        - term: Fault Simulation
+          definition: >-
+            WireMock's ability to simulate network faults such as connection
+            resets, empty responses, and malformed data to test error handling.

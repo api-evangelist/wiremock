@@ -1,0 +1,38 @@
+{
+  "scenarioName": "Shopping Cart Checkout",
+  "requiredScenarioState": "Started",
+  "newScenarioState": "Item Added",
+  "request": {
+    "method": "POST",
+    "urlPath": "/api/v1/cart/items",
+    "bodyPatterns": [
+      {
+        "matchesJsonPath": "$.productId"
+      }
+    ]
+  },
+  "response": {
+    "status": 201,
+    "headers": {
+      "Content-Type": "application/json",
+      "Location": "/api/v1/cart/items/item-001"
+    },
+    "jsonBody": {
+      "cartId": "cart-abc123",
+      "items": [
+        {
+          "id": "item-001",
+          "productId": "prod-xyz",
+          "quantity": 1,
+          "price": 29.99
+        }
+      ],
+      "total": 29.99
+    }
+  },
+  "name": "Add First Item to Cart",
+  "metadata": {
+    "scenario": "Shopping Cart Checkout",
+    "state": "Started -> Item Added"
+  }
+}
