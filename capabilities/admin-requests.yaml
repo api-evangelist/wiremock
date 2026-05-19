@@ -1,0 +1,416 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: WireMock Admin API — Requests
+  description: 'WireMock Admin API — Requests. 10 operations. Lead operation: Get All Requests in Journal. Self-contained
+    Naftiko capability covering one Wiremock business surface.'
+  tags:
+  - Wiremock
+  - Requests
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    WIREMOCK_API_KEY: WIREMOCK_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: admin-requests
+    baseUri: http://localhost:8080
+    description: WireMock Admin API — Requests business capability. Self-contained, no shared references.
+    resources:
+    - name: __admin-requests
+      path: /__admin/requests
+      operations:
+      - name: get
+        method: GET
+        description: Get All Requests in Journal
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: limit
+          in: query
+          type: string
+          description: The maximum number of results to return
+        - name: since
+          in: query
+          type: string
+          description: Only return logged requests after this date
+      - name: delete
+        method: DELETE
+        description: Delete All Requests in Journal
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: __admin-requests-count
+      path: /__admin/requests/count
+      operations:
+      - name: post
+        method: POST
+        description: Count Requests by Criteria
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: __admin-requests-find
+      path: /__admin/requests/find
+      operations:
+      - name: post
+        method: POST
+        description: Find Requests by Criteria
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: __admin-requests-remove
+      path: /__admin/requests/remove
+      operations:
+      - name: post
+        method: POST
+        description: Remove Requests by Criteria
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: __admin-requests-remove-by-metadata
+      path: /__admin/requests/remove-by-metadata
+      operations:
+      - name: post
+        method: POST
+        description: Delete Requests Matching Metadata
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: __admin-requests-reset
+      path: /__admin/requests/reset
+      operations:
+      - name: post
+        method: POST
+        description: Empty the Request Journal
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: __admin-requests-unmatched
+      path: /__admin/requests/unmatched
+      operations:
+      - name: get
+        method: GET
+        description: Find Unmatched Requests
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: __admin-requests-requestId
+      path: /__admin/requests/{requestId}
+      operations:
+      - name: get
+        method: GET
+        description: Get Request by ID
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: requestId
+          in: path
+          type: string
+          description: The UUID of the logged request
+          required: true
+      - name: delete
+        method: DELETE
+        description: Delete Request by ID
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: requestId
+          in: path
+          type: string
+          description: The UUID of the logged request
+          required: true
+  exposes:
+  - type: rest
+    namespace: admin-requests-rest
+    port: 8080
+    description: REST adapter for WireMock Admin API — Requests. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/admin/requests
+      name: admin-requests
+      description: REST surface for __admin-requests.
+      operations:
+      - method: GET
+        name: get
+        description: Get All Requests in Journal
+        call: admin-requests.get
+        with:
+          limit: rest.limit
+          since: rest.since
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: delete
+        description: Delete All Requests in Journal
+        call: admin-requests.delete
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/admin/requests/count
+      name: admin-requests-count
+      description: REST surface for __admin-requests-count.
+      operations:
+      - method: POST
+        name: post
+        description: Count Requests by Criteria
+        call: admin-requests.post
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/admin/requests/find
+      name: admin-requests-find
+      description: REST surface for __admin-requests-find.
+      operations:
+      - method: POST
+        name: post
+        description: Find Requests by Criteria
+        call: admin-requests.post
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/admin/requests/remove
+      name: admin-requests-remove
+      description: REST surface for __admin-requests-remove.
+      operations:
+      - method: POST
+        name: post
+        description: Remove Requests by Criteria
+        call: admin-requests.post
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/admin/requests/remove-by-metadata
+      name: admin-requests-remove-by-metadata
+      description: REST surface for __admin-requests-remove-by-metadata.
+      operations:
+      - method: POST
+        name: post
+        description: Delete Requests Matching Metadata
+        call: admin-requests.post
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/admin/requests/reset
+      name: admin-requests-reset
+      description: REST surface for __admin-requests-reset.
+      operations:
+      - method: POST
+        name: post
+        description: Empty the Request Journal
+        call: admin-requests.post
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/admin/requests/unmatched
+      name: admin-requests-unmatched
+      description: REST surface for __admin-requests-unmatched.
+      operations:
+      - method: GET
+        name: get
+        description: Find Unmatched Requests
+        call: admin-requests.get
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/admin/requests/{requestid}
+      name: admin-requests-requestid
+      description: REST surface for __admin-requests-requestId.
+      operations:
+      - method: GET
+        name: get
+        description: Get Request by ID
+        call: admin-requests.get
+        with:
+          requestId: rest.requestId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: delete
+        description: Delete Request by ID
+        call: admin-requests.delete
+        with:
+          requestId: rest.requestId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: admin-requests-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for WireMock Admin API — Requests. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: get-all-requests-journal
+      description: Get All Requests in Journal
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: admin-requests.get
+      with:
+        limit: tools.limit
+        since: tools.since
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-all-requests-journal
+      description: Delete All Requests in Journal
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: admin-requests.delete
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: count-requests-criteria
+      description: Count Requests by Criteria
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: admin-requests.post
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: find-requests-criteria
+      description: Find Requests by Criteria
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: admin-requests.post
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: remove-requests-criteria
+      description: Remove Requests by Criteria
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: admin-requests.post
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-requests-matching-metadata
+      description: Delete Requests Matching Metadata
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: admin-requests.post
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: empty-request-journal
+      description: Empty the Request Journal
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: admin-requests.post
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: find-unmatched-requests
+      description: Find Unmatched Requests
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: admin-requests.get
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-request-id
+      description: Get Request by ID
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: admin-requests.get
+      with:
+        requestId: tools.requestId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-request-id
+      description: Delete Request by ID
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: admin-requests.delete
+      with:
+        requestId: tools.requestId
+      outputParameters:
+      - type: object
+        mapping: $.

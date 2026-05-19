@@ -1,0 +1,183 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: WireMock Admin API — Recordings
+  description: 'WireMock Admin API — Recordings. 4 operations. Lead operation: Take a Snapshot Recording. Self-contained Naftiko
+    capability covering one Wiremock business surface.'
+  tags:
+  - Wiremock
+  - Recordings
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    WIREMOCK_API_KEY: WIREMOCK_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: admin-recordings
+    baseUri: http://localhost:8080
+    description: WireMock Admin API — Recordings business capability. Self-contained, no shared references.
+    resources:
+    - name: __admin-recordings-snapshot
+      path: /__admin/recordings/snapshot
+      operations:
+      - name: post
+        method: POST
+        description: Take a Snapshot Recording
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: __admin-recordings-start
+      path: /__admin/recordings/start
+      operations:
+      - name: post
+        method: POST
+        description: Start Recording
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: __admin-recordings-status
+      path: /__admin/recordings/status
+      operations:
+      - name: get
+        method: GET
+        description: Get Recording Status
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: __admin-recordings-stop
+      path: /__admin/recordings/stop
+      operations:
+      - name: post
+        method: POST
+        description: Stop Recording
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: admin-recordings-rest
+    port: 8080
+    description: REST adapter for WireMock Admin API — Recordings. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/admin/recordings/snapshot
+      name: admin-recordings-snapshot
+      description: REST surface for __admin-recordings-snapshot.
+      operations:
+      - method: POST
+        name: post
+        description: Take a Snapshot Recording
+        call: admin-recordings.post
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/admin/recordings/start
+      name: admin-recordings-start
+      description: REST surface for __admin-recordings-start.
+      operations:
+      - method: POST
+        name: post
+        description: Start Recording
+        call: admin-recordings.post
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/admin/recordings/status
+      name: admin-recordings-status
+      description: REST surface for __admin-recordings-status.
+      operations:
+      - method: GET
+        name: get
+        description: Get Recording Status
+        call: admin-recordings.get
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/admin/recordings/stop
+      name: admin-recordings-stop
+      description: REST surface for __admin-recordings-stop.
+      operations:
+      - method: POST
+        name: post
+        description: Stop Recording
+        call: admin-recordings.post
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: admin-recordings-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for WireMock Admin API — Recordings. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: take-snapshot-recording
+      description: Take a Snapshot Recording
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: admin-recordings.post
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: start-recording
+      description: Start Recording
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: admin-recordings.post
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-recording-status
+      description: Get Recording Status
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: admin-recordings.get
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: stop-recording
+      description: Stop Recording
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: admin-recordings.post
+      outputParameters:
+      - type: object
+        mapping: $.

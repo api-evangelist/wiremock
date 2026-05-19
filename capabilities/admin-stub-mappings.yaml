@@ -1,0 +1,414 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: WireMock Admin API — Stub Mappings
+  description: 'WireMock Admin API — Stub Mappings. 11 operations. Lead operation: Get All Stub Mappings. Self-contained Naftiko
+    capability covering one Wiremock business surface.'
+  tags:
+  - Wiremock
+  - Stub Mappings
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    WIREMOCK_API_KEY: WIREMOCK_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: admin-stub-mappings
+    baseUri: http://localhost:8080
+    description: WireMock Admin API — Stub Mappings business capability. Self-contained, no shared references.
+    resources:
+    - name: __admin-mappings
+      path: /__admin/mappings
+      operations:
+      - name: get
+        method: GET
+        description: Get All Stub Mappings
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: limit
+          in: query
+          type: integer
+          description: The maximum number of results to return
+        - name: offset
+          in: query
+          type: integer
+          description: The start index of the results to return
+      - name: post
+        method: POST
+        description: Create a New Stub Mapping
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: delete
+        method: DELETE
+        description: Delete All Stub Mappings
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: __admin-mappings-find-by-metadata
+      path: /__admin/mappings/find-by-metadata
+      operations:
+      - name: post
+        method: POST
+        description: Find stubs by matching on their metadata
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: __admin-mappings-import
+      path: /__admin/mappings/import
+      operations:
+      - name: post
+        method: POST
+        description: Import Stub Mappings
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: __admin-mappings-remove-by-metadata
+      path: /__admin/mappings/remove-by-metadata
+      operations:
+      - name: post
+        method: POST
+        description: Delete Stub Mappings Matching Metadata
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: __admin-mappings-reset
+      path: /__admin/mappings/reset
+      operations:
+      - name: post
+        method: POST
+        description: Reset Stub Mappings
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: __admin-mappings-save
+      path: /__admin/mappings/save
+      operations:
+      - name: post
+        method: POST
+        description: Persist Stub Mappings
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: __admin-mappings-stubMappingId
+      path: /__admin/mappings/{stubMappingId}
+      operations:
+      - name: get
+        method: GET
+        description: Get Stub Mapping by ID
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: put
+        method: PUT
+        description: Update a Stub Mapping
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: delete
+        method: DELETE
+        description: Delete a Stub Mapping
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: admin-stub-mappings-rest
+    port: 8080
+    description: REST adapter for WireMock Admin API — Stub Mappings. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/admin/mappings
+      name: admin-mappings
+      description: REST surface for __admin-mappings.
+      operations:
+      - method: GET
+        name: get
+        description: Get All Stub Mappings
+        call: admin-stub-mappings.get
+        with:
+          limit: rest.limit
+          offset: rest.offset
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: post
+        description: Create a New Stub Mapping
+        call: admin-stub-mappings.post
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: delete
+        description: Delete All Stub Mappings
+        call: admin-stub-mappings.delete
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/admin/mappings/find-by-metadata
+      name: admin-mappings-find-by-metadata
+      description: REST surface for __admin-mappings-find-by-metadata.
+      operations:
+      - method: POST
+        name: post
+        description: Find stubs by matching on their metadata
+        call: admin-stub-mappings.post
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/admin/mappings/import
+      name: admin-mappings-import
+      description: REST surface for __admin-mappings-import.
+      operations:
+      - method: POST
+        name: post
+        description: Import Stub Mappings
+        call: admin-stub-mappings.post
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/admin/mappings/remove-by-metadata
+      name: admin-mappings-remove-by-metadata
+      description: REST surface for __admin-mappings-remove-by-metadata.
+      operations:
+      - method: POST
+        name: post
+        description: Delete Stub Mappings Matching Metadata
+        call: admin-stub-mappings.post
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/admin/mappings/reset
+      name: admin-mappings-reset
+      description: REST surface for __admin-mappings-reset.
+      operations:
+      - method: POST
+        name: post
+        description: Reset Stub Mappings
+        call: admin-stub-mappings.post
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/admin/mappings/save
+      name: admin-mappings-save
+      description: REST surface for __admin-mappings-save.
+      operations:
+      - method: POST
+        name: post
+        description: Persist Stub Mappings
+        call: admin-stub-mappings.post
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/admin/mappings/{stubmappingid}
+      name: admin-mappings-stubmappingid
+      description: REST surface for __admin-mappings-stubMappingId.
+      operations:
+      - method: GET
+        name: get
+        description: Get Stub Mapping by ID
+        call: admin-stub-mappings.get
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: put
+        description: Update a Stub Mapping
+        call: admin-stub-mappings.put
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: delete
+        description: Delete a Stub Mapping
+        call: admin-stub-mappings.delete
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: admin-stub-mappings-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for WireMock Admin API — Stub Mappings. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: get-all-stub-mappings
+      description: Get All Stub Mappings
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: admin-stub-mappings.get
+      with:
+        limit: tools.limit
+        offset: tools.offset
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-new-stub-mapping
+      description: Create a New Stub Mapping
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: admin-stub-mappings.post
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-all-stub-mappings
+      description: Delete All Stub Mappings
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: admin-stub-mappings.delete
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: find-stubs-matching-their-metadata
+      description: Find stubs by matching on their metadata
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: admin-stub-mappings.post
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: import-stub-mappings
+      description: Import Stub Mappings
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: admin-stub-mappings.post
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-stub-mappings-matching-metadata
+      description: Delete Stub Mappings Matching Metadata
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: admin-stub-mappings.post
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: reset-stub-mappings
+      description: Reset Stub Mappings
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: admin-stub-mappings.post
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: persist-stub-mappings
+      description: Persist Stub Mappings
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: admin-stub-mappings.post
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-stub-mapping-id
+      description: Get Stub Mapping by ID
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: admin-stub-mappings.get
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-stub-mapping
+      description: Update a Stub Mapping
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: admin-stub-mappings.put
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-stub-mapping
+      description: Delete a Stub Mapping
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: admin-stub-mappings.delete
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,151 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: WireMock Admin API — Near Misses
+  description: 'WireMock Admin API — Near Misses. 3 operations. Lead operation: Find Near Misses Matching Specific Request.
+    Self-contained Naftiko capability covering one Wiremock business surface.'
+  tags:
+  - Wiremock
+  - Near Misses
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    WIREMOCK_API_KEY: WIREMOCK_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: admin-near-misses
+    baseUri: http://localhost:8080
+    description: WireMock Admin API — Near Misses business capability. Self-contained, no shared references.
+    resources:
+    - name: __admin-near-misses-request
+      path: /__admin/near-misses/request
+      operations:
+      - name: post
+        method: POST
+        description: Find Near Misses Matching Specific Request
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: __admin-near-misses-request-pattern
+      path: /__admin/near-misses/request-pattern
+      operations:
+      - name: post
+        method: POST
+        description: Find Near Misses Matching Request Pattern
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: __admin-requests-unmatched-near-misses
+      path: /__admin/requests/unmatched/near-misses
+      operations:
+      - name: get
+        method: GET
+        description: Retrieve near-misses for all unmatched requests
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: admin-near-misses-rest
+    port: 8080
+    description: REST adapter for WireMock Admin API — Near Misses. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/admin/near-misses/request
+      name: admin-near-misses-request
+      description: REST surface for __admin-near-misses-request.
+      operations:
+      - method: POST
+        name: post
+        description: Find Near Misses Matching Specific Request
+        call: admin-near-misses.post
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/admin/near-misses/request-pattern
+      name: admin-near-misses-request-pattern
+      description: REST surface for __admin-near-misses-request-pattern.
+      operations:
+      - method: POST
+        name: post
+        description: Find Near Misses Matching Request Pattern
+        call: admin-near-misses.post
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/admin/requests/unmatched/near-misses
+      name: admin-requests-unmatched-near-misses
+      description: REST surface for __admin-requests-unmatched-near-misses.
+      operations:
+      - method: GET
+        name: get
+        description: Retrieve near-misses for all unmatched requests
+        call: admin-near-misses.get
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: admin-near-misses-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for WireMock Admin API — Near Misses. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: find-near-misses-matching-specific
+      description: Find Near Misses Matching Specific Request
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: admin-near-misses.post
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: find-near-misses-matching-request
+      description: Find Near Misses Matching Request Pattern
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: admin-near-misses.post
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: retrieve-near-misses-all-unmatched
+      description: Retrieve near-misses for all unmatched requests
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: admin-near-misses.get
+      outputParameters:
+      - type: object
+        mapping: $.

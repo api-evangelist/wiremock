@@ -1,0 +1,141 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: WireMock Admin API — System
+  description: 'WireMock Admin API — System. 3 operations. Lead operation: Reset Mappings and Request Journal. Self-contained
+    Naftiko capability covering one Wiremock business surface.'
+  tags:
+  - Wiremock
+  - System
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    WIREMOCK_API_KEY: WIREMOCK_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: admin-system
+    baseUri: http://localhost:8080
+    description: WireMock Admin API — System business capability. Self-contained, no shared references.
+    resources:
+    - name: __admin-reset
+      path: /__admin/reset
+      operations:
+      - name: post
+        method: POST
+        description: Reset Mappings and Request Journal
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: __admin-settings
+      path: /__admin/settings
+      operations:
+      - name: post
+        method: POST
+        description: Update Global Settings
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: __admin-shutdown
+      path: /__admin/shutdown
+      operations:
+      - name: post
+        method: POST
+        description: Shutdown the WireMock server
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: admin-system-rest
+    port: 8080
+    description: REST adapter for WireMock Admin API — System. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/admin/reset
+      name: admin-reset
+      description: REST surface for __admin-reset.
+      operations:
+      - method: POST
+        name: post
+        description: Reset Mappings and Request Journal
+        call: admin-system.post
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/admin/settings
+      name: admin-settings
+      description: REST surface for __admin-settings.
+      operations:
+      - method: POST
+        name: post
+        description: Update Global Settings
+        call: admin-system.post
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/admin/shutdown
+      name: admin-shutdown
+      description: REST surface for __admin-shutdown.
+      operations:
+      - method: POST
+        name: post
+        description: Shutdown the WireMock server
+        call: admin-system.post
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: admin-system-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for WireMock Admin API — System. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: reset-mappings-and-request-journal
+      description: Reset Mappings and Request Journal
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: admin-system.post
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-global-settings
+      description: Update Global Settings
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: admin-system.post
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: shutdown-wiremock-server
+      description: Shutdown the WireMock server
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: admin-system.post
+      outputParameters:
+      - type: object
+        mapping: $.
