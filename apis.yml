@@ -131,6 +131,8 @@ common:
     name: WireMock Vocabulary
     type: Vocabulary
     description: Domain vocabulary for WireMock API mocking concepts.
+  - type: LLMsTxt
+    url: https://wiremock.org/llms.txt
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
