@@ -1,0 +1,541 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "WireMock Admin API",
+    "version": "2.35.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Stub Mappings",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get All Stub Mappings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/__admin/mappings",
+            "params": [
+              {
+                "name": "limit",
+                "value": "10",
+                "type": "query",
+                "description": "The maximum number of results to return"
+              },
+              {
+                "name": "offset",
+                "value": "0",
+                "type": "query",
+                "description": "The start index of the results to return"
+              }
+            ]
+          },
+          "docs": "Get All Stub Mappings"
+        },
+        {
+          "info": {
+            "name": "Create a New Stub Mapping",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8080/__admin/mappings",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a New Stub Mapping"
+        },
+        {
+          "info": {
+            "name": "Delete All Stub Mappings",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://localhost:8080/__admin/mappings"
+          },
+          "docs": "Delete All Stub Mappings"
+        },
+        {
+          "info": {
+            "name": "Reset Stub Mappings",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8080/__admin/mappings/reset"
+          },
+          "docs": "Restores stub mappings to the defaults defined back in the backing store"
+        },
+        {
+          "info": {
+            "name": "Persist Stub Mappings",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8080/__admin/mappings/save"
+          },
+          "docs": "Save all persistent stub mappings to the backing store"
+        },
+        {
+          "info": {
+            "name": "Import Stub Mappings",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8080/__admin/mappings/import"
+          },
+          "docs": "Import given stub mappings to the backing store"
+        },
+        {
+          "info": {
+            "name": "Get Stub Mapping by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/__admin/mappings/:stubMappingId",
+            "params": [
+              {
+                "name": "stubMappingId",
+                "value": "730d3e32-d098-4169-a20c-554c3bedce58",
+                "type": "path",
+                "description": "The UUID of stub mapping"
+              }
+            ]
+          },
+          "docs": "Get Stub Mapping by ID"
+        },
+        {
+          "info": {
+            "name": "Update a Stub Mapping",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://localhost:8080/__admin/mappings/:stubMappingId",
+            "params": [
+              {
+                "name": "stubMappingId",
+                "value": "730d3e32-d098-4169-a20c-554c3bedce58",
+                "type": "path",
+                "description": "The UUID of stub mapping"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a Stub Mapping"
+        },
+        {
+          "info": {
+            "name": "Delete a Stub Mapping",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://localhost:8080/__admin/mappings/:stubMappingId",
+            "params": [
+              {
+                "name": "stubMappingId",
+                "value": "730d3e32-d098-4169-a20c-554c3bedce58",
+                "type": "path",
+                "description": "The UUID of stub mapping"
+              }
+            ]
+          },
+          "docs": "Delete a Stub Mapping"
+        },
+        {
+          "info": {
+            "name": "POST /__admin/mappings/find-by-metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8080/__admin/mappings/find-by-metadata",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Find stubs by matching on their metadata"
+        },
+        {
+          "info": {
+            "name": "Delete Stub Mappings Matching Metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8080/__admin/mappings/remove-by-metadata",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Delete Stub Mappings Matching Metadata"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Requests",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get All Requests in Journal",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/__admin/requests",
+            "params": [
+              {
+                "name": "limit",
+                "value": "10",
+                "type": "query",
+                "description": "The maximum number of results to return"
+              },
+              {
+                "name": "since",
+                "value": "Wed Oct 05 2016 08:33:01 GMT-0400 (Eastern Daylight Time)",
+                "type": "query",
+                "description": "Only return logged requests after this date"
+              }
+            ]
+          },
+          "docs": "Get All Requests in Journal"
+        },
+        {
+          "info": {
+            "name": "Delete All Requests in Journal",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://localhost:8080/__admin/requests"
+          },
+          "docs": "Delete All Requests in Journal"
+        },
+        {
+          "info": {
+            "name": "Get Request by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/__admin/requests/:requestId",
+            "params": [
+              {
+                "name": "requestId",
+                "value": "12fb14bb-600e-4bfa-bd8d-be7f12562c99",
+                "type": "path",
+                "description": "The UUID of the logged request"
+              }
+            ]
+          },
+          "docs": "Get Request by ID"
+        },
+        {
+          "info": {
+            "name": "Delete Request by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://localhost:8080/__admin/requests/:requestId",
+            "params": [
+              {
+                "name": "requestId",
+                "value": "12fb14bb-600e-4bfa-bd8d-be7f12562c99",
+                "type": "path",
+                "description": "The UUID of the logged request"
+              }
+            ]
+          },
+          "docs": "Delete Request by ID"
+        },
+        {
+          "info": {
+            "name": "Empty the Request Journal",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8080/__admin/requests/reset"
+          },
+          "docs": "Empty the Request Journal"
+        },
+        {
+          "info": {
+            "name": "Count Requests by Criteria",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8080/__admin/requests/count",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Count requests logged in the journal matching the specified criteria"
+        },
+        {
+          "info": {
+            "name": "Remove Requests by Criteria",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8080/__admin/requests/remove",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Removed requests logged in the journal matching the specified criteria"
+        },
+        {
+          "info": {
+            "name": "Delete Requests Matching Metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8080/__admin/requests/remove-by-metadata",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Delete Requests Matching Metadata"
+        },
+        {
+          "info": {
+            "name": "Find Requests by Criteria",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8080/__admin/requests/find",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieve details of requests logged in the journal matching the specified criteria"
+        },
+        {
+          "info": {
+            "name": "Find Unmatched Requests",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/__admin/requests/unmatched"
+          },
+          "docs": "Get details of logged requests that weren't matched by any stub mapping"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Near Misses",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /__admin/requests/unmatched/near-misses",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/__admin/requests/unmatched/near-misses"
+          },
+          "docs": "Retrieve near-misses for all unmatched requests"
+        },
+        {
+          "info": {
+            "name": "Find Near Misses Matching Specific Request",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8080/__admin/near-misses/request",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Find at most 3 near misses for closest stub mappings to the specified request"
+        },
+        {
+          "info": {
+            "name": "Find Near Misses Matching Request Pattern",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8080/__admin/near-misses/request-pattern",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Find at most 3 near misses for closest logged requests to the specified request pattern"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Recordings",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Start Recording",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8080/__admin/recordings/start",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Begin recording stub mappings"
+        },
+        {
+          "info": {
+            "name": "Stop Recording",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8080/__admin/recordings/stop"
+          },
+          "docs": "End recording of stub mappings"
+        },
+        {
+          "info": {
+            "name": "Get Recording Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/__admin/recordings/status"
+          },
+          "docs": "Get Recording Status"
+        },
+        {
+          "info": {
+            "name": "Take a Snapshot Recording",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8080/__admin/recordings/snapshot",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Take a Snapshot Recording"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Scenarios",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get All Scenarios",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/__admin/scenarios"
+          },
+          "docs": "Get All Scenarios"
+        },
+        {
+          "info": {
+            "name": "Reset the State of All Scenarios",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8080/__admin/scenarios/reset"
+          },
+          "docs": "Reset the State of All Scenarios"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "System",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Update Global Settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8080/__admin/settings",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Global Settings"
+        },
+        {
+          "info": {
+            "name": "Reset Mappings and Request Journal",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8080/__admin/reset"
+          },
+          "docs": "Reset mappings to the default state and reset the request journal"
+        },
+        {
+          "info": {
+            "name": "POST /__admin/shutdown",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8080/__admin/shutdown"
+          },
+          "docs": "Shutdown the WireMock server"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
