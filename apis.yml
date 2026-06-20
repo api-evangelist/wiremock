@@ -7,7 +7,7 @@ description: >-
   behavior through scenarios. The project is governed by the WireMock community on GitHub and supports Java, Python,
   JavaScript, .NET, Go, PHP, and Kotlin clients.
 type: Index
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 tags:
   - API Mocking
   - Mock Server
