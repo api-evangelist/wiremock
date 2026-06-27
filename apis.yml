@@ -54,10 +54,10 @@ apis:
       - type: JSONStructure
         url: >-
           https://raw.githubusercontent.com/api-evangelist/wiremock/refs/heads/main/json-structure/wiremock-stub-mapping-structure.json
-      - type: Example
+      - type: Examples
         url: >-
           https://raw.githubusercontent.com/api-evangelist/wiremock/refs/heads/main/examples/wiremock-create-stub-mapping-example.json
-      - type: Example
+      - type: Examples
         url: >-
           https://raw.githubusercontent.com/api-evangelist/wiremock/refs/heads/main/examples/wiremock-scenario-stub-example.json
 common:
@@ -85,27 +85,27 @@ common:
     description: WireMock GitHub organization with SDKs for Java, Python, JS, .NET, Go, PHP, and Kotlin.
   - url: https://github.com/wiremock/python-wiremock
     name: WireMock Python Client
-    type: SDK
+    type: SDKs
     description: Official WireMock Python client library.
   - url: https://github.com/wiremock/wiremock-js
     name: WireMock JavaScript Client
-    type: SDK
+    type: SDKs
     description: Official WireMock JavaScript/Node.js client library.
   - url: https://github.com/wiremock/WireMock.Net
     name: WireMock.Net
-    type: SDK
+    type: SDKs
     description: Official WireMock .NET client library.
   - url: https://github.com/wiremock/go-wiremock
     name: WireMock Go Client
-    type: SDK
+    type: SDKs
     description: Official WireMock Go client library.
   - url: https://github.com/wiremock/wiremock-php
     name: WireMock PHP Client
-    type: SDK
+    type: SDKs
     description: Official WireMock PHP client library.
   - url: https://github.com/wiremock/kotlin-wiremock
     name: WireMock Kotlin Client
-    type: SDK
+    type: SDKs
     description: Official WireMock Kotlin client library.
   - url: https://github.com/wiremock/wiremock-docker
     name: WireMock Docker
@@ -117,7 +117,7 @@ common:
     description: Official WireMock Helm charts for Kubernetes deployment.
   - url: https://github.com/wiremock/wiremock-npm
     name: WireMock npm Package
-    type: SDK
+    type: SDKs
     description: WireMock npm package for Node.js.
   - url: https://raw.githubusercontent.com/api-evangelist/wiremock/refs/heads/main/json-ld/wiremock-context.jsonld
     name: WireMock JSON-LD Context
@@ -127,7 +127,7 @@ common:
     name: WireMock Vocabulary
     type: Vocabulary
     description: Domain vocabulary for WireMock API mocking concepts.
-  - type: LLMsTxt
+  - type: LlmsText
     url: https://wiremock.org/llms.txt
 maintainers:
   - FN: Kin Lane
