@@ -61,6 +61,8 @@ apis:
         url: >-
           https://raw.githubusercontent.com/api-evangelist/wiremock/refs/heads/main/examples/wiremock-scenario-stub-example.json
 common:
+  - type: DomainSecurity
+    url: security/wiremock-domain-security.yml
   - type: LinkedIn
     url: https://www.linkedin.com/company/wiremock
   - url: https://wiremock.org/
