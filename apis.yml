@@ -61,6 +61,8 @@ apis:
         url: >-
           https://raw.githubusercontent.com/api-evangelist/wiremock/refs/heads/main/examples/wiremock-scenario-stub-example.json
 common:
+  - type: AgenticAccess
+    url: agentic-access/wiremock-agentic-access.yml
   - type: DomainSecurity
     url: security/wiremock-domain-security.yml
   - type: LinkedIn
