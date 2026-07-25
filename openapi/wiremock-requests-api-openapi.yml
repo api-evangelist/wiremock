@@ -1,0 +1,190 @@
+openapi: 3.0.0
+info:
+  title: WireMock Admin Near Misses Requests API
+  description: The WireMock Admin REST API provides programmatic control over a running WireMock server instance. It supports creating, updating, and deleting stub mappings; querying the request journal; recording and replaying real API traffic; managing stateful scenarios; and performing system operations such as reset and shutdown. Available under the /__admin/ path prefix on any running WireMock instance.
+  version: 2.35.0
+  contact:
+    name: WireMock Community
+    url: https://wiremock.org/
+servers:
+- url: http://localhost:8080
+  description: Local WireMock server instance
+tags:
+- name: Requests
+  description: Logged requests and responses received by the mock service
+  externalDocs:
+    description: User documentation
+    url: http://wiremock.org/docs/verifying/
+paths:
+  /__admin/requests:
+    get:
+      summary: Get All Requests in Journal
+      tags:
+      - Requests
+      parameters:
+      - description: The maximum number of results to return
+        in: query
+        name: limit
+        example: 10
+        schema:
+          type: string
+      - description: Only return logged requests after this date
+        in: query
+        name: since
+        example: 2016-10-05 12:33:01+00:00
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                $ref: examples/serve-events.yaml
+          description: List of received requests
+    delete:
+      summary: Delete All Requests in Journal
+      tags:
+      - Requests
+      responses:
+        '200':
+          description: Successfully deleted
+  /__admin/requests/{requestId}:
+    get:
+      summary: Get Request by ID
+      tags:
+      - Requests
+      parameters:
+      - description: The UUID of the logged request
+        in: path
+        name: requestId
+        required: true
+        example: 12fb14bb-600e-4bfa-bd8d-be7f12562c99
+        schema:
+          type: string
+      responses:
+        '404':
+          description: Request not found
+        '200':
+          description: OK
+          content:
+            application/json:
+              example:
+                $ref: examples/request.yaml
+    delete:
+      summary: Delete Request by ID
+      tags:
+      - Requests
+      parameters:
+      - description: The UUID of the logged request
+        in: path
+        name: requestId
+        required: true
+        example: 12fb14bb-600e-4bfa-bd8d-be7f12562c99
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successfully deleted
+  /__admin/requests/reset:
+    post:
+      deprecated: true
+      summary: Empty the Request Journal
+      tags:
+      - Requests
+      responses:
+        '200':
+          description: Successfully reset
+  /__admin/requests/count:
+    post:
+      summary: Count Requests by Criteria
+      description: Count requests logged in the journal matching the specified criteria
+      tags:
+      - Requests
+      requestBody:
+        $ref: '#/components/requestBodies/requestPattern'
+      responses:
+        '200':
+          description: Number of matching requests
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  count:
+                    type: integer
+                    example: 4
+  /__admin/requests/remove:
+    post:
+      summary: Remove Requests by Criteria
+      description: Removed requests logged in the journal matching the specified criteria
+      tags:
+      - Requests
+      requestBody:
+        $ref: '#/components/requestBodies/requestPattern'
+      responses:
+        '200':
+          description: Removed request details
+          content:
+            application/json:
+              example:
+                $ref: examples/requests.yaml
+  /__admin/requests/remove-by-metadata:
+    post:
+      summary: Delete Requests Matching Metadata
+      tags:
+      - Requests
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: schemas/content-pattern.yaml
+            example:
+              $ref: examples/by-metadata-request.yaml
+      responses:
+        '200':
+          description: Removed request details
+          content:
+            application/json:
+              example:
+                $ref: examples/requests.yaml
+  /__admin/requests/find:
+    post:
+      summary: Find Requests by Criteria
+      description: Retrieve details of requests logged in the journal matching the specified criteria
+      tags:
+      - Requests
+      requestBody:
+        $ref: '#/components/requestBodies/requestPattern'
+      responses:
+        '200':
+          description: Matching request details
+          content:
+            application/json:
+              example:
+                $ref: examples/requests.yaml
+  /__admin/requests/unmatched:
+    get:
+      summary: Find Unmatched Requests
+      description: Get details of logged requests that weren't matched by any stub mapping
+      tags:
+      - Requests
+      responses:
+        '200':
+          description: Unmatched request details
+          content:
+            application/json:
+              example:
+                $ref: examples/requests.yaml
+components:
+  requestBodies:
+    requestPattern:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: schemas/request-pattern.yaml
+          example:
+            $ref: examples/request-pattern.yaml
+externalDocs:
+  description: WireMock User Documentation
+  url: https://wiremock.org/docs/

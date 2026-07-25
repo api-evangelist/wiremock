@@ -1,0 +1,125 @@
+openapi: 3.0.0
+info:
+  title: WireMock Admin Near Misses Recordings API
+  description: The WireMock Admin REST API provides programmatic control over a running WireMock server instance. It supports creating, updating, and deleting stub mappings; querying the request journal; recording and replaying real API traffic; managing stateful scenarios; and performing system operations such as reset and shutdown. Available under the /__admin/ path prefix on any running WireMock instance.
+  version: 2.35.0
+  contact:
+    name: WireMock Community
+    url: https://wiremock.org/
+servers:
+- url: http://localhost:8080
+  description: Local WireMock server instance
+tags:
+- name: Recordings
+  description: Stub mapping record and snapshot functions
+  externalDocs:
+    description: User documentation
+    url: http://wiremock.org/docs/record-playback/
+paths:
+  /__admin/recordings/start:
+    post:
+      summary: Start Recording
+      description: Begin recording stub mappings
+      tags:
+      - Recordings
+      requestBody:
+        $ref: '#/components/requestBodies/startRecording'
+      responses:
+        '200':
+          description: Successfully started recording
+  /__admin/recordings/stop:
+    post:
+      summary: Stop Recording
+      description: End recording of stub mappings
+      tags:
+      - Recordings
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: schemas/stub-mappings.yaml
+              example:
+                $ref: examples/recorded-stub-mappings.yaml
+          description: Successfully stopped recording
+  /__admin/recordings/status:
+    get:
+      summary: Get Recording Status
+      tags:
+      - Recordings
+      responses:
+        '200':
+          description: Successfully got the record status
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: Stopped
+                    enum:
+                    - NeverStarted
+                    - Recording
+                    - Stopped
+  /__admin/recordings/snapshot:
+    post:
+      summary: Take a Snapshot Recording
+      tags:
+      - Recordings
+      requestBody:
+        $ref: '#/components/requestBodies/snapshotRecording'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: schemas/stub-mappings.yaml
+              example:
+                $ref: examples/recorded-stub-mappings.yaml
+          description: Successfully took a snapshot recording
+components:
+  requestBodies:
+    snapshotRecording:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            allOf:
+            - $ref: schemas/record-spec.yaml
+            - properties:
+                filters:
+                  type: object
+                  allOf:
+                  - properties:
+                      ids:
+                        type: array
+                        items:
+                          type: string
+                    type: object
+                    description: Filter requests for which to create stub mapping
+                  - $ref: schemas/request-pattern.yaml
+          example:
+            $ref: examples/snapshot-spec.yaml
+    startRecording:
+      required: true
+      content:
+        application/json:
+          schema:
+            allOf:
+            - $ref: schemas/record-spec.yaml
+            - properties:
+                filters:
+                  allOf:
+                  - $ref: schemas/request-pattern.yaml
+                  - description: Filter requests for which to create stub mapping
+                targetBaseUrl:
+                  type: string
+                  description: Target URL when using the record and playback API
+                  example: http://examples.wiremockapi.cloud/
+          example:
+            $ref: examples/record-spec.yaml
+externalDocs:
+  description: WireMock User Documentation
+  url: https://wiremock.org/docs/

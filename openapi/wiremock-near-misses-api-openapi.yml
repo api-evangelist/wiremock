@@ -1,0 +1,81 @@
+openapi: 3.0.0
+info:
+  title: WireMock Admin Near Misses API
+  description: The WireMock Admin REST API provides programmatic control over a running WireMock server instance. It supports creating, updating, and deleting stub mappings; querying the request journal; recording and replaying real API traffic; managing stateful scenarios; and performing system operations such as reset and shutdown. Available under the /__admin/ path prefix on any running WireMock instance.
+  version: 2.35.0
+  contact:
+    name: WireMock Community
+    url: https://wiremock.org/
+servers:
+- url: http://localhost:8080
+  description: Local WireMock server instance
+tags:
+- name: Near Misses
+  description: Near misses allow querying of received requests or request patterns according to similarity
+  externalDocs:
+    description: User documentation
+    url: http://wiremock.org/docs/verifying/#near-misses
+paths:
+  /__admin/requests/unmatched/near-misses:
+    get:
+      description: Retrieve near-misses for all unmatched requests
+      tags:
+      - Near Misses
+      responses:
+        '200':
+          $ref: '#/components/responses/nearMisses'
+  /__admin/near-misses/request:
+    post:
+      summary: Find Near Misses Matching Specific Request
+      description: Find at most 3 near misses for closest stub mappings to the specified request
+      tags:
+      - Near Misses
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: schemas/logged-request.yaml
+            example:
+              $ref: examples/logged-request.yaml
+        required: true
+      responses:
+        '200':
+          $ref: '#/components/responses/nearMisses'
+  /__admin/near-misses/request-pattern:
+    post:
+      summary: Find Near Misses Matching Request Pattern
+      description: Find at most 3 near misses for closest logged requests to the specified request pattern
+      tags:
+      - Near Misses
+      requestBody:
+        $ref: '#/components/requestBodies/requestPattern'
+      responses:
+        '200':
+          $ref: '#/components/responses/nearMisses'
+components:
+  requestBodies:
+    requestPattern:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: schemas/request-pattern.yaml
+          example:
+            $ref: examples/request-pattern.yaml
+  responses:
+    nearMisses:
+      description: Near misses matching criteria
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              nearMisses:
+                type: array
+                items:
+                  $ref: schemas/logged-request.yaml
+          example:
+            $ref: examples/near-misses.yaml
+externalDocs:
+  description: WireMock User Documentation
+  url: https://wiremock.org/docs/

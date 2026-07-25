@@ -1,0 +1,56 @@
+openapi: 3.0.0
+info:
+  title: WireMock Admin Near Misses System API
+  description: The WireMock Admin REST API provides programmatic control over a running WireMock server instance. It supports creating, updating, and deleting stub mappings; querying the request journal; recording and replaying real API traffic; managing stateful scenarios; and performing system operations such as reset and shutdown. Available under the /__admin/ path prefix on any running WireMock instance.
+  version: 2.35.0
+  contact:
+    name: WireMock Community
+    url: https://wiremock.org/
+servers:
+- url: http://localhost:8080
+  description: Local WireMock server instance
+tags:
+- name: System
+  description: Global operations
+paths:
+  /__admin/settings:
+    post:
+      summary: Update Global Settings
+      tags:
+      - System
+      requestBody:
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: schemas/delay-distribution.yaml
+              - type: object
+                properties:
+                  fixedDelay:
+                    type: number
+                example:
+                  fixedDelay: 500
+        required: true
+      responses:
+        '200':
+          description: Settings successfully updated
+  /__admin/reset:
+    post:
+      summary: Reset Mappings and Request Journal
+      description: Reset mappings to the default state and reset the request journal
+      tags:
+      - System
+      responses:
+        '200':
+          description: Successfully reset
+  /__admin/shutdown:
+    post:
+      description: Shutdown the WireMock server
+      tags:
+      - System
+      responses:
+        '200':
+          description: Server will be shut down
+externalDocs:
+  description: WireMock User Documentation
+  url: https://wiremock.org/docs/
