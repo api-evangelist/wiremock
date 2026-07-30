@@ -7,7 +7,19 @@ description: >-
   behavior through scenarios. The project is governed by the WireMock community on GitHub and supports Java, Python,
   JavaScript, .NET, Go, PHP, and Kotlin clients.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Freemium
+  confidence: medium
+  source:
+  - plans
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/wiremock.png
 tags:
   - API Mocking
   - Mock Server
@@ -22,44 +34,187 @@ modified: '2026-05-19'
 position: Consumer
 specificationVersion: '0.19'
 apis:
-  - aid: wiremock:wiremock-admin-api
-    name: WireMock Admin API
-    description: >-
-      The WireMock Admin REST API provides programmatic control over a running WireMock server instance. It supports
-      creating, updating, and deleting stub mappings; querying the request journal; recording and replaying real API
-      traffic; managing stateful scenarios; and performing system operations such as reset and shutdown. The API is
-      described in OpenAPI 3.0 and available under the /__admin/ path prefix on any running WireMock instance.
-    humanURL: https://wiremock.org/docs/standalone/admin-api-reference/
-    baseURL: http://localhost:8080
-    tags:
-      - Admin API
-      - API Mocking
-      - Mock Server
-      - Stub Management
-      - Testing
-    properties:
-      - type: Documentation
-        url: https://wiremock.org/docs/standalone/admin-api-reference/
-      - type: OpenAPI
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/wiremock/refs/heads/main/openapi/wiremock-admin-api-openapi.yml
-      - type: Rules
-        url: https://raw.githubusercontent.com/api-evangelist/wiremock/refs/heads/main/rules/wiremock-rules.yml
-      - type: Capabilities
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/wiremock/refs/heads/main/capabilities/api-mocking-and-testing.yaml
-      - type: JSONSchema
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/wiremock/refs/heads/main/json-schema/wiremock-stub-mapping-schema.json
-      - type: JSONStructure
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/wiremock/refs/heads/main/json-structure/wiremock-stub-mapping-structure.json
-      - type: Examples
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/wiremock/refs/heads/main/examples/wiremock-create-stub-mapping-example.json
-      - type: Examples
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/wiremock/refs/heads/main/examples/wiremock-scenario-stub-example.json
+- aid: wiremock:wiremock-near-misses-api
+  name: WireMock Near Misses API
+  description: >-
+    Near misses allow querying of received requests or request patterns according to similarity
+  humanURL: https://wiremock.org/docs/standalone/admin-api-reference/
+  baseURL: http://localhost:8080
+  tags:
+  - Near Misses
+  properties:
+  - type: OpenAPI
+    url: openapi/wiremock-near-misses-api-openapi.yml
+  - type: Documentation
+    url: https://wiremock.org/docs/standalone/admin-api-reference/
+  - type: Rules
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/wiremock/refs/heads/main/rules/wiremock-rules.yml
+  - type: Capabilities
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/wiremock/refs/heads/main/capabilities/api-mocking-and-testing.yaml
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/wiremock/refs/heads/main/json-schema/wiremock-stub-mapping-schema.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/wiremock/refs/heads/main/json-structure/wiremock-stub-mapping-structure.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/wiremock/refs/heads/main/examples/wiremock-create-stub-mapping-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/wiremock/refs/heads/main/examples/wiremock-scenario-stub-example.json
+- aid: wiremock:wiremock-recordings-api
+  name: WireMock Recordings API
+  description: Stub mapping record and snapshot functions
+  humanURL: https://wiremock.org/docs/standalone/admin-api-reference/
+  baseURL: http://localhost:8080
+  tags:
+  - Recordings
+  properties:
+  - type: OpenAPI
+    url: openapi/wiremock-recordings-api-openapi.yml
+  - type: Documentation
+    url: https://wiremock.org/docs/standalone/admin-api-reference/
+  - type: Rules
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/wiremock/refs/heads/main/rules/wiremock-rules.yml
+  - type: Capabilities
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/wiremock/refs/heads/main/capabilities/api-mocking-and-testing.yaml
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/wiremock/refs/heads/main/json-schema/wiremock-stub-mapping-schema.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/wiremock/refs/heads/main/json-structure/wiremock-stub-mapping-structure.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/wiremock/refs/heads/main/examples/wiremock-create-stub-mapping-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/wiremock/refs/heads/main/examples/wiremock-scenario-stub-example.json
+- aid: wiremock:wiremock-requests-api
+  name: WireMock Requests API
+  description: Logged requests and responses received by the mock service
+  humanURL: https://wiremock.org/docs/standalone/admin-api-reference/
+  baseURL: http://localhost:8080
+  tags:
+  - Requests
+  properties:
+  - type: OpenAPI
+    url: openapi/wiremock-requests-api-openapi.yml
+  - type: Documentation
+    url: https://wiremock.org/docs/standalone/admin-api-reference/
+  - type: Rules
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/wiremock/refs/heads/main/rules/wiremock-rules.yml
+  - type: Capabilities
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/wiremock/refs/heads/main/capabilities/api-mocking-and-testing.yaml
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/wiremock/refs/heads/main/json-schema/wiremock-stub-mapping-schema.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/wiremock/refs/heads/main/json-structure/wiremock-stub-mapping-structure.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/wiremock/refs/heads/main/examples/wiremock-create-stub-mapping-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/wiremock/refs/heads/main/examples/wiremock-scenario-stub-example.json
+- aid: wiremock:wiremock-scenarios-api
+  name: WireMock Scenarios API
+  description: Scenarios support modelling of stateful behaviour
+  humanURL: https://wiremock.org/docs/standalone/admin-api-reference/
+  baseURL: http://localhost:8080
+  tags:
+  - Scenarios
+  properties:
+  - type: OpenAPI
+    url: openapi/wiremock-scenarios-api-openapi.yml
+  - type: Documentation
+    url: https://wiremock.org/docs/standalone/admin-api-reference/
+  - type: Rules
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/wiremock/refs/heads/main/rules/wiremock-rules.yml
+  - type: Capabilities
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/wiremock/refs/heads/main/capabilities/api-mocking-and-testing.yaml
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/wiremock/refs/heads/main/json-schema/wiremock-stub-mapping-schema.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/wiremock/refs/heads/main/json-structure/wiremock-stub-mapping-structure.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/wiremock/refs/heads/main/examples/wiremock-create-stub-mapping-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/wiremock/refs/heads/main/examples/wiremock-scenario-stub-example.json
+- aid: wiremock:wiremock-stub-mappings-api
+  name: WireMock Stub Mappings API
+  description: Operations on stub mappings
+  humanURL: https://wiremock.org/docs/standalone/admin-api-reference/
+  baseURL: http://localhost:8080
+  tags:
+  - Stub Mappings
+  properties:
+  - type: OpenAPI
+    url: openapi/wiremock-stub-mappings-api-openapi.yml
+  - type: Documentation
+    url: https://wiremock.org/docs/standalone/admin-api-reference/
+  - type: Rules
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/wiremock/refs/heads/main/rules/wiremock-rules.yml
+  - type: Capabilities
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/wiremock/refs/heads/main/capabilities/api-mocking-and-testing.yaml
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/wiremock/refs/heads/main/json-schema/wiremock-stub-mapping-schema.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/wiremock/refs/heads/main/json-structure/wiremock-stub-mapping-structure.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/wiremock/refs/heads/main/examples/wiremock-create-stub-mapping-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/wiremock/refs/heads/main/examples/wiremock-scenario-stub-example.json
+- aid: wiremock:wiremock-system-api
+  name: WireMock System API
+  description: Global operations
+  humanURL: https://wiremock.org/docs/standalone/admin-api-reference/
+  baseURL: http://localhost:8080
+  tags:
+  - System
+  properties:
+  - type: OpenAPI
+    url: openapi/wiremock-system-api-openapi.yml
+  - type: Documentation
+    url: https://wiremock.org/docs/standalone/admin-api-reference/
+  - type: Rules
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/wiremock/refs/heads/main/rules/wiremock-rules.yml
+  - type: Capabilities
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/wiremock/refs/heads/main/capabilities/api-mocking-and-testing.yaml
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/wiremock/refs/heads/main/json-schema/wiremock-stub-mapping-schema.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/wiremock/refs/heads/main/json-structure/wiremock-stub-mapping-structure.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/wiremock/refs/heads/main/examples/wiremock-create-stub-mapping-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/wiremock/refs/heads/main/examples/wiremock-scenario-stub-example.json
 common:
   - type: AgenticAccess
     url: agentic-access/wiremock-agentic-access.yml
