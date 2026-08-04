@@ -1,0 +1,24 @@
+{
+  "provider": "wiremock",
+  "sources": [
+    "wiremock-near-misses-api-openapi.yml",
+    "wiremock-recordings-api-openapi.yml",
+    "wiremock-requests-api-openapi.yml",
+    "wiremock-scenarios-api-openapi.yml",
+    "wiremock-stub-mappings-api-openapi.yml",
+    "wiremock-system-api-openapi.yml"
+  ],
+  "outputs": [
+    "wiremock-near-misses-api-openapi.yml",
+    "wiremock-recordings-api-openapi.yml",
+    "wiremock-requests-api-openapi.yml",
+    "wiremock-scenarios-api-openapi.yml",
+    "wiremock-stub-mappings-api-openapi.yml",
+    "wiremock-system-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
