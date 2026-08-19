@@ -1,0 +1,338 @@
+{
+  "item": [
+    {
+      "id": "61b98fe5-7f5d-4f2d-9827-4795aae6f5df",
+      "name": "Recordings",
+      "description": {
+        "content": "Stub mapping record and snapshot functions",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f18c8086-6159-4172-963c-30d9f569402d",
+          "name": "Start Recording",
+          "request": {
+            "name": "Start Recording",
+            "description": {
+              "content": "Begin recording stub mappings",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "__admin",
+                "recordings",
+                "start"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"filters\": {\n    \"value\": \"reference schemas/request-pattern.yaml not found in the OpenAPI spec\",\n    \"description\": \"Filter requests for which to create stub mapping\"\n  },\n  \"targetBaseUrl\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1559e216-e644-4590-a1f9-ba504b11f2aa",
+              "name": "Successfully started recording",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "__admin",
+                    "recordings",
+                    "start"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "92bbea2b-d19e-48dc-849b-b4552cbf348c",
+          "name": "Stop Recording",
+          "request": {
+            "name": "Stop Recording",
+            "description": {
+              "content": "End recording of stub mappings",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "__admin",
+                "recordings",
+                "stop"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8f81e715-c143-4468-bfdd-ab42ebbfa336",
+              "name": "Successfully stopped recording",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "__admin",
+                    "recordings",
+                    "stop"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": \"reference examples/recorded-stub-mappings.yaml not found in the given specification\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "847513b9-f094-48a6-9a4e-a6c012ad23a2",
+          "name": "Get Recording Status",
+          "request": {
+            "name": "Get Recording Status",
+            "description": {},
+            "url": {
+              "path": [
+                "__admin",
+                "recordings",
+                "status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "565ca368-2c2f-43fc-89dc-dfd5f8295603",
+              "name": "Successfully got the record status",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "__admin",
+                    "recordings",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"Stopped\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0a867802-a25d-4313-af44-14f1c965f7a7",
+          "name": "Take a Snapshot Recording",
+          "request": {
+            "name": "Take a Snapshot Recording",
+            "description": {},
+            "url": {
+              "path": [
+                "__admin",
+                "recordings",
+                "snapshot"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a866ee81-4964-4682-8e73-83c45f03d8ba",
+              "name": "Successfully took a snapshot recording",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "__admin",
+                    "recordings",
+                    "snapshot"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": \"reference examples/recorded-stub-mappings.yaml not found in the given specification\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:8080",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "6ef8fce8-c439-4949-affe-3538ac7722ad",
+    "name": "WireMock Admin Near Misses Recordings API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The WireMock Admin REST API provides programmatic control over a running WireMock server instance. It supports creating, updating, and deleting stub mappings; querying the request journal; recording and replaying real API traffic; managing stateful scenarios; and performing system operations such as reset and shutdown. Available under the /__admin/ path prefix on any running WireMock instance.\n\nContact Support:\n Name: WireMock Community",
+      "type": "text/plain"
+    }
+  }
+}

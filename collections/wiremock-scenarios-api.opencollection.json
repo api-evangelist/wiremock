@@ -1,0 +1,40 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "WireMock Admin Near Misses Scenarios API",
+    "version": "2.35.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Scenarios",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get All Scenarios",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/__admin/scenarios"
+          },
+          "docs": "Get All Scenarios"
+        },
+        {
+          "info": {
+            "name": "Reset the State of All Scenarios",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8080/__admin/scenarios/reset"
+          },
+          "docs": "Reset the State of All Scenarios"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,70 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "WireMock Admin Near Misses Recordings API",
+    "version": "2.35.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Recordings",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Start Recording",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8080/__admin/recordings/start",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Begin recording stub mappings"
+        },
+        {
+          "info": {
+            "name": "Stop Recording",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8080/__admin/recordings/stop"
+          },
+          "docs": "End recording of stub mappings"
+        },
+        {
+          "info": {
+            "name": "Get Recording Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/__admin/recordings/status"
+          },
+          "docs": "Get Recording Status"
+        },
+        {
+          "info": {
+            "name": "Take a Snapshot Recording",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8080/__admin/recordings/snapshot",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Take a Snapshot Recording"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

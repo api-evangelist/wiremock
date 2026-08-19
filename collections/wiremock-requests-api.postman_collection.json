@@ -1,0 +1,867 @@
+{
+  "item": [
+    {
+      "id": "1995a3df-8f5e-4d0b-87cc-8b608c0bc51a",
+      "name": "Requests",
+      "description": {
+        "content": "Logged requests and responses received by the mock service",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "46db7273-9865-4871-8ad0-e3945878cf9c",
+          "name": "Get All Requests in Journal",
+          "request": {
+            "name": "Get All Requests in Journal",
+            "description": {},
+            "url": {
+              "path": [
+                "__admin",
+                "requests"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<string>",
+                  "description": "The maximum number of results to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "since",
+                  "value": "<string>",
+                  "description": "Only return logged requests after this date"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "af694d02-4970-41f6-b141-063e71ba16bc",
+              "name": "List of received requests",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "__admin",
+                    "requests"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "since",
+                      "value": "2016-10-05 12:33:01+00:00"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": \"reference examples/serve-events.yaml not found in the given specification\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7c613da9-cc43-4fe3-ab2a-5dbb29190e1f",
+          "name": "Delete All Requests in Journal",
+          "request": {
+            "name": "Delete All Requests in Journal",
+            "description": {},
+            "url": {
+              "path": [
+                "__admin",
+                "requests"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a229c1f0-0ee7-4b35-8665-dea6397f0f32",
+              "name": "Successfully deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "__admin",
+                    "requests"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9a2f5c1f-94a5-40e0-a19d-224bd0ae26b6",
+          "name": "Get Request by ID",
+          "request": {
+            "name": "Get Request by ID",
+            "description": {},
+            "url": {
+              "path": [
+                "__admin",
+                "requests",
+                ":requestId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "requestId",
+                  "description": "(Required) The UUID of the logged request"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a52ec5e9-8683-43ed-af97-f45576210255",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "__admin",
+                    "requests",
+                    ":requestId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "requestId",
+                      "description": "(Required) The UUID of the logged request"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": \"reference examples/request.yaml not found in the given specification\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f99af047-5180-4ed0-a3e7-c3022d232305",
+              "name": "Request not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "__admin",
+                    "requests",
+                    ":requestId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "requestId",
+                      "description": "(Required) The UUID of the logged request"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f69c9aac-0d56-4584-8b72-08288817bf18",
+          "name": "Delete Request by ID",
+          "request": {
+            "name": "Delete Request by ID",
+            "description": {},
+            "url": {
+              "path": [
+                "__admin",
+                "requests",
+                ":requestId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "requestId",
+                  "description": "(Required) The UUID of the logged request"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a5704cb0-3a01-496d-8565-911ba569f45b",
+              "name": "Successfully deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "__admin",
+                    "requests",
+                    ":requestId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "requestId",
+                      "description": "(Required) The UUID of the logged request"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7b083ed1-f5d1-4442-8aca-ab3e15fb67a5",
+          "name": "Empty the Request Journal",
+          "request": {
+            "name": "Empty the Request Journal",
+            "description": {},
+            "url": {
+              "path": [
+                "__admin",
+                "requests",
+                "reset"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5f4bf1ca-3624-47c4-93dd-c19ca6d2d5bb",
+              "name": "Successfully reset",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "__admin",
+                    "requests",
+                    "reset"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ec5d0a0c-81a7-426d-b5e5-e12bd016bb1a",
+          "name": "Count Requests by Criteria",
+          "request": {
+            "name": "Count Requests by Criteria",
+            "description": {
+              "content": "Count requests logged in the journal matching the specified criteria",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "__admin",
+                "requests",
+                "count"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e37bd2ed-237b-4edd-919e-c992bd5cfb8a",
+              "name": "Number of matching requests",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "__admin",
+                    "requests",
+                    "count"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"count\": 4\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e2097811-5ec6-4961-a7a9-509c0ebbc46b",
+          "name": "Remove Requests by Criteria",
+          "request": {
+            "name": "Remove Requests by Criteria",
+            "description": {
+              "content": "Removed requests logged in the journal matching the specified criteria",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "__admin",
+                "requests",
+                "remove"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c47f2ee1-cc3d-46cf-8526-127b17463756",
+              "name": "Removed request details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "__admin",
+                    "requests",
+                    "remove"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": \"reference examples/requests.yaml not found in the given specification\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cdb9de44-1258-42ca-a838-8e216ebceef9",
+          "name": "Delete Requests Matching Metadata",
+          "request": {
+            "name": "Delete Requests Matching Metadata",
+            "description": {},
+            "url": {
+              "path": [
+                "__admin",
+                "requests",
+                "remove-by-metadata"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "91fb7b52-13f5-40bc-ba21-4dc988eb1016",
+              "name": "Removed request details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "__admin",
+                    "requests",
+                    "remove-by-metadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"value\": \"reference examples/by-metadata-request.yaml not found in the given specification\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": \"reference examples/requests.yaml not found in the given specification\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f17593a1-b8cb-44b4-99ca-37e114c135b7",
+          "name": "Find Requests by Criteria",
+          "request": {
+            "name": "Find Requests by Criteria",
+            "description": {
+              "content": "Retrieve details of requests logged in the journal matching the specified criteria",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "__admin",
+                "requests",
+                "find"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c55057db-cfc7-45af-ad19-c6f5eea86da7",
+              "name": "Matching request details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "__admin",
+                    "requests",
+                    "find"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": \"reference examples/requests.yaml not found in the given specification\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7b87cda6-65e1-41cd-badf-619e99c8fb02",
+          "name": "Find Unmatched Requests",
+          "request": {
+            "name": "Find Unmatched Requests",
+            "description": {
+              "content": "Get details of logged requests that weren't matched by any stub mapping",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "__admin",
+                "requests",
+                "unmatched"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1256e2ec-baaf-4cdf-8e47-68155c4adb5f",
+              "name": "Unmatched request details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "__admin",
+                    "requests",
+                    "unmatched"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": \"reference examples/requests.yaml not found in the given specification\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:8080",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "9d72a5c2-4896-41a1-be7f-d191ecb4390c",
+    "name": "WireMock Admin Near Misses Requests API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The WireMock Admin REST API provides programmatic control over a running WireMock server instance. It supports creating, updating, and deleting stub mappings; querying the request journal; recording and replaying real API traffic; managing stateful scenarios; and performing system operations such as reset and shutdown. Available under the /__admin/ path prefix on any running WireMock instance.\n\nContact Support:\n Name: WireMock Community",
+      "type": "text/plain"
+    }
+  }
+}

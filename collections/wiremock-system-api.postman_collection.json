@@ -1,0 +1,232 @@
+{
+  "item": [
+    {
+      "id": "bed88e73-f45e-420b-990e-eeca9411bd66",
+      "name": "System",
+      "description": {
+        "content": "Global operations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5dfbaae1-b02a-4e8b-88d8-18a9a4649fbd",
+          "name": "Update Global Settings",
+          "request": {
+            "name": "Update Global Settings",
+            "description": {},
+            "url": {
+              "path": [
+                "__admin",
+                "settings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fixedDelay\": \"<number>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b95b0c98-8847-4015-853e-fb8171772cac",
+              "name": "Settings successfully updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "__admin",
+                    "settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fixedDelay\": 500\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0387e972-7b3b-46ce-838b-7630ae05efcb",
+          "name": "Reset Mappings and Request Journal",
+          "request": {
+            "name": "Reset Mappings and Request Journal",
+            "description": {
+              "content": "Reset mappings to the default state and reset the request journal",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "__admin",
+                "reset"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d911fd70-0785-4e88-9155-d907c10277a1",
+              "name": "Successfully reset",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "__admin",
+                    "reset"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2fe069f8-ab62-491f-92e4-3da944a742b1",
+          "name": "Shutdown the WireMock server",
+          "request": {
+            "name": "Shutdown the WireMock server",
+            "description": {
+              "content": "Shutdown the WireMock server",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "__admin",
+                "shutdown"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "58601b5c-c581-49ed-86f9-9030338fed57",
+              "name": "Server will be shut down",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "__admin",
+                    "shutdown"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:8080",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "4c6254e0-5322-4807-a10d-7796d45e218b",
+    "name": "WireMock Admin Near Misses System API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The WireMock Admin REST API provides programmatic control over a running WireMock server instance. It supports creating, updating, and deleting stub mappings; querying the request journal; recording and replaying real API traffic; managing stateful scenarios; and performing system operations such as reset and shutdown. Available under the /__admin/ path prefix on any running WireMock instance.\n\nContact Support:\n Name: WireMock Community",
+      "type": "text/plain"
+    }
+  }
+}

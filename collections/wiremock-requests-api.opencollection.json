@@ -1,0 +1,174 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "WireMock Admin Near Misses Requests API",
+    "version": "2.35.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Requests",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get All Requests in Journal",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/__admin/requests",
+            "params": [
+              {
+                "name": "limit",
+                "value": "10",
+                "type": "query",
+                "description": "The maximum number of results to return"
+              },
+              {
+                "name": "since",
+                "value": "2016-10-05 12:33:01+00:00",
+                "type": "query",
+                "description": "Only return logged requests after this date"
+              }
+            ]
+          },
+          "docs": "Get All Requests in Journal"
+        },
+        {
+          "info": {
+            "name": "Delete All Requests in Journal",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://localhost:8080/__admin/requests"
+          },
+          "docs": "Delete All Requests in Journal"
+        },
+        {
+          "info": {
+            "name": "Get Request by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/__admin/requests/:requestId",
+            "params": [
+              {
+                "name": "requestId",
+                "value": "12fb14bb-600e-4bfa-bd8d-be7f12562c99",
+                "type": "path",
+                "description": "The UUID of the logged request"
+              }
+            ]
+          },
+          "docs": "Get Request by ID"
+        },
+        {
+          "info": {
+            "name": "Delete Request by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://localhost:8080/__admin/requests/:requestId",
+            "params": [
+              {
+                "name": "requestId",
+                "value": "12fb14bb-600e-4bfa-bd8d-be7f12562c99",
+                "type": "path",
+                "description": "The UUID of the logged request"
+              }
+            ]
+          },
+          "docs": "Delete Request by ID"
+        },
+        {
+          "info": {
+            "name": "Empty the Request Journal",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8080/__admin/requests/reset"
+          },
+          "docs": "Empty the Request Journal"
+        },
+        {
+          "info": {
+            "name": "Count Requests by Criteria",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8080/__admin/requests/count",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Count requests logged in the journal matching the specified criteria"
+        },
+        {
+          "info": {
+            "name": "Remove Requests by Criteria",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8080/__admin/requests/remove",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Removed requests logged in the journal matching the specified criteria"
+        },
+        {
+          "info": {
+            "name": "Delete Requests Matching Metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8080/__admin/requests/remove-by-metadata",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Delete Requests Matching Metadata"
+        },
+        {
+          "info": {
+            "name": "Find Requests by Criteria",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8080/__admin/requests/find",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieve details of requests logged in the journal matching the specified criteria"
+        },
+        {
+          "info": {
+            "name": "Find Unmatched Requests",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/__admin/requests/unmatched"
+          },
+          "docs": "Get details of logged requests that weren't matched by any stub mapping"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

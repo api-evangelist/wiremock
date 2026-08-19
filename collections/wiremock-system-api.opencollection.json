@@ -1,0 +1,55 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "WireMock Admin Near Misses System API",
+    "version": "2.35.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "System",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Update Global Settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8080/__admin/settings",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Global Settings"
+        },
+        {
+          "info": {
+            "name": "Reset Mappings and Request Journal",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8080/__admin/reset"
+          },
+          "docs": "Reset mappings to the default state and reset the request journal"
+        },
+        {
+          "info": {
+            "name": "POST /__admin/shutdown",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8080/__admin/shutdown"
+          },
+          "docs": "Shutdown the WireMock server"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

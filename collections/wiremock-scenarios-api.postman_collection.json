@@ -1,0 +1,160 @@
+{
+  "item": [
+    {
+      "id": "53550581-da85-4e24-b2aa-75a08a483c19",
+      "name": "Scenarios",
+      "description": {
+        "content": "Scenarios support modelling of stateful behaviour",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "09542306-ee47-412f-9eed-43e950c7faad",
+          "name": "Get All Scenarios",
+          "request": {
+            "name": "Get All Scenarios",
+            "description": {},
+            "url": {
+              "path": [
+                "__admin",
+                "scenarios"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8b48d9b1-9a8f-4528-a753-dfe00abe2297",
+              "name": "All scenarios",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "__admin",
+                    "scenarios"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"scenarios\": [\n    {\n      \"value\": \"reference schemas/scenario.yaml not found in the OpenAPI spec\"\n    },\n    {\n      \"value\": \"reference schemas/scenario.yaml not found in the OpenAPI spec\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a4fd738f-b0a2-4052-8bf7-b8be34614c22",
+          "name": "Reset the State of All Scenarios",
+          "request": {
+            "name": "Reset the State of All Scenarios",
+            "description": {},
+            "url": {
+              "path": [
+                "__admin",
+                "scenarios",
+                "reset"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "af459dc2-9331-4a01-8d65-d4b1e75473ae",
+              "name": "Successfully reset",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "__admin",
+                    "scenarios",
+                    "reset"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:8080",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "546caff9-3435-4dbb-9e34-b17ecc393553",
+    "name": "WireMock Admin Near Misses Scenarios API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The WireMock Admin REST API provides programmatic control over a running WireMock server instance. It supports creating, updating, and deleting stub mappings; querying the request journal; recording and replaying real API traffic; managing stateful scenarios; and performing system operations such as reset and shutdown. Available under the /__admin/ path prefix on any running WireMock instance.\n\nContact Support:\n Name: WireMock Community",
+      "type": "text/plain"
+    }
+  }
+}

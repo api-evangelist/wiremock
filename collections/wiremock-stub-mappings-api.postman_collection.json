@@ -1,0 +1,1004 @@
+{
+  "item": [
+    {
+      "id": "8be85030-a1fd-4be1-be9b-da49c898179a",
+      "name": "Stub Mappings",
+      "description": {
+        "content": "Operations on stub mappings",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "90ada396-315c-4059-a7e1-efb23c5b86f0",
+          "name": "Get All Stub Mappings",
+          "request": {
+            "name": "Get All Stub Mappings",
+            "description": {},
+            "url": {
+              "path": [
+                "__admin",
+                "mappings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "The maximum number of results to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The start index of the results to return"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4bfcb0f0-82a0-4331-be61-daa0b9a60805",
+              "name": "All stub mappings",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "__admin",
+                    "mappings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": \"reference examples/stub-mappings.yaml not found in the given specification\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0d7130ba-238a-4794-b936-f869308f013b",
+          "name": "Create a New Stub Mapping",
+          "request": {
+            "name": "Create a New Stub Mapping",
+            "description": {},
+            "url": {
+              "path": [
+                "__admin",
+                "mappings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f4eb7ee0-80bc-4e0a-8fd9-eb67e898038c",
+              "name": "The stub mapping",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "__admin",
+                    "mappings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": \"reference examples/stub-mapping-with-id.yaml not found in the given specification\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d0a1b3c5-dec0-498f-98f3-e0456a7da6ce",
+          "name": "Delete All Stub Mappings",
+          "request": {
+            "name": "Delete All Stub Mappings",
+            "description": {},
+            "url": {
+              "path": [
+                "__admin",
+                "mappings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "367a9315-b6d6-4008-9f30-d30956e88624",
+              "name": "Successfully deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "__admin",
+                    "mappings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "39961da4-1154-49ed-84e0-2ad6753aa2e9",
+          "name": "Reset Stub Mappings",
+          "request": {
+            "name": "Reset Stub Mappings",
+            "description": {
+              "content": "Restores stub mappings to the defaults defined back in the backing store",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "__admin",
+                "mappings",
+                "reset"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dca22138-4f83-4702-989b-4f8b7ff6bdd6",
+              "name": "Successfully reset",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "__admin",
+                    "mappings",
+                    "reset"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ae6a9994-0d42-46ea-9441-2a5224b76085",
+          "name": "Persist Stub Mappings",
+          "request": {
+            "name": "Persist Stub Mappings",
+            "description": {
+              "content": "Save all persistent stub mappings to the backing store",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "__admin",
+                "mappings",
+                "save"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "477e16fa-bf25-4b47-8a85-47635fcb4ecb",
+              "name": "Successfully saved",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "__admin",
+                    "mappings",
+                    "save"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "11a381f4-792b-40d0-8522-00eac945f7fc",
+          "name": "Import Stub Mappings",
+          "request": {
+            "name": "Import Stub Mappings",
+            "description": {
+              "content": "Import given stub mappings to the backing store",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "__admin",
+                "mappings",
+                "import"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0aebf115-6f9e-41a1-bada-49f4e3c6533a",
+              "name": "Successfully imported",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "__admin",
+                    "mappings",
+                    "import"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2fe6a92b-91b5-4439-92a7-3f648686abe2",
+          "name": "Get Stub Mapping by ID",
+          "request": {
+            "name": "Get Stub Mapping by ID",
+            "description": {},
+            "url": {
+              "path": [
+                "__admin",
+                "mappings",
+                ":stubMappingId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "stubMappingId",
+                  "description": "(Required) The UUID of stub mapping"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9701e814-b224-4e99-a448-989def89f61b",
+              "name": "The stub mapping",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "__admin",
+                    "mappings",
+                    ":stubMappingId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "stubMappingId",
+                      "description": "(Required) The UUID of stub mapping"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": \"reference examples/stub-mapping-with-id.yaml not found in the given specification\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "12522fc6-9d88-464b-96e5-e1607fa188b9",
+              "name": "Stub mapping not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "__admin",
+                    "mappings",
+                    ":stubMappingId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "stubMappingId",
+                      "description": "(Required) The UUID of stub mapping"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "33234766-69cb-4f37-921a-07516583cdf0",
+          "name": "Update a Stub Mapping",
+          "request": {
+            "name": "Update a Stub Mapping",
+            "description": {},
+            "url": {
+              "path": [
+                "__admin",
+                "mappings",
+                ":stubMappingId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "stubMappingId",
+                  "description": "(Required) The UUID of stub mapping"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7151f75d-b9b2-4d15-a306-70e9cf3e9076",
+              "name": "The stub mapping",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "__admin",
+                    "mappings",
+                    ":stubMappingId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "stubMappingId",
+                      "description": "(Required) The UUID of stub mapping"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": \"reference examples/stub-mapping-with-id.yaml not found in the given specification\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "761cad9d-67d8-4eb5-828f-69dc82137a85",
+              "name": "Stub mapping not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "__admin",
+                    "mappings",
+                    ":stubMappingId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "stubMappingId",
+                      "description": "(Required) The UUID of stub mapping"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a5ae9c7a-347d-48a8-9e11-c4835076225b",
+          "name": "Delete a Stub Mapping",
+          "request": {
+            "name": "Delete a Stub Mapping",
+            "description": {},
+            "url": {
+              "path": [
+                "__admin",
+                "mappings",
+                ":stubMappingId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "stubMappingId",
+                  "description": "(Required) The UUID of stub mapping"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dccf9ac7-6f78-410e-b4b3-2984562769d6",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "__admin",
+                    "mappings",
+                    ":stubMappingId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "stubMappingId",
+                      "description": "(Required) The UUID of stub mapping"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a3731bb3-982f-4c0c-a444-e9dd47f5e28f",
+              "name": "Stub mapping not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "__admin",
+                    "mappings",
+                    ":stubMappingId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "stubMappingId",
+                      "description": "(Required) The UUID of stub mapping"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e506b5d3-e6ad-44f9-9776-af1585fb6d11",
+          "name": "Find stubs by matching on their metadata",
+          "request": {
+            "name": "Find stubs by matching on their metadata",
+            "description": {
+              "content": "Find stubs by matching on their metadata",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "__admin",
+                "mappings",
+                "find-by-metadata"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2fbe7d66-5e3c-4a83-8068-cdcecddcfae1",
+              "name": "Matched stub mappings",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "__admin",
+                    "mappings",
+                    "find-by-metadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"value\": \"reference examples/by-metadata-request.yaml not found in the given specification\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": \"reference examples/stub-mappings.yaml not found in the given specification\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2a3755c2-2bed-4656-addd-b802b02df21c",
+          "name": "Delete Stub Mappings Matching Metadata",
+          "request": {
+            "name": "Delete Stub Mappings Matching Metadata",
+            "description": {},
+            "url": {
+              "path": [
+                "__admin",
+                "mappings",
+                "remove-by-metadata"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6c3ee1be-4423-4374-bb1c-cb83baf941c0",
+              "name": "The stub mappings were successfully removed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "__admin",
+                    "mappings",
+                    "remove-by-metadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"value\": \"reference examples/by-metadata-request.yaml not found in the given specification\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:8080",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "dd0cdac0-282e-489b-b50b-fae33965d34d",
+    "name": "WireMock Admin Near Misses Stub Mappings API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The WireMock Admin REST API provides programmatic control over a running WireMock server instance. It supports creating, updating, and deleting stub mappings; querying the request journal; recording and replaying real API traffic; managing stateful scenarios; and performing system operations such as reset and shutdown. Available under the /__admin/ path prefix on any running WireMock instance.\n\nContact Support:\n Name: WireMock Community",
+      "type": "text/plain"
+    }
+  }
+}

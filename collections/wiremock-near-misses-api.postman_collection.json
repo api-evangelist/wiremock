@@ -1,0 +1,290 @@
+{
+  "item": [
+    {
+      "id": "0c054702-17e8-490e-a8d6-a8bff704e875",
+      "name": "Near Misses",
+      "description": {
+        "content": "Near misses allow querying of received requests or request patterns according to similarity",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a8d6bc76-fccd-44cb-823e-101c1050d12a",
+          "name": "Retrieve near-misses for all unmatched requests",
+          "request": {
+            "name": "Retrieve near-misses for all unmatched requests",
+            "description": {
+              "content": "Retrieve near-misses for all unmatched requests",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "__admin",
+                "requests",
+                "unmatched",
+                "near-misses"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9ce3957e-8593-49ac-8aa4-284f6b9cd390",
+              "name": "Near misses matching criteria",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "__admin",
+                    "requests",
+                    "unmatched",
+                    "near-misses"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": \"reference examples/near-misses.yaml not found in the given specification\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e74ddcdf-ac5d-41e1-b40b-85de977d2750",
+          "name": "Find Near Misses Matching Specific Request",
+          "request": {
+            "name": "Find Near Misses Matching Specific Request",
+            "description": {
+              "content": "Find at most 3 near misses for closest stub mappings to the specified request",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "__admin",
+                "near-misses",
+                "request"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a69b8180-39c0-40e5-b852-f1383f8aafc3",
+              "name": "Near misses matching criteria",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "__admin",
+                    "near-misses",
+                    "request"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"value\": \"reference examples/logged-request.yaml not found in the given specification\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": \"reference examples/near-misses.yaml not found in the given specification\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6c467966-d143-41dc-9416-c81988e1c5a5",
+          "name": "Find Near Misses Matching Request Pattern",
+          "request": {
+            "name": "Find Near Misses Matching Request Pattern",
+            "description": {
+              "content": "Find at most 3 near misses for closest logged requests to the specified request pattern",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "__admin",
+                "near-misses",
+                "request-pattern"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "04d37782-4828-442d-8b9a-f6abb4ab76d3",
+              "name": "Near misses matching criteria",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "__admin",
+                    "near-misses",
+                    "request-pattern"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": \"reference examples/near-misses.yaml not found in the given specification\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:8080",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "c0ea8a26-24fd-4419-a7ce-ec8dbaaf8ccf",
+    "name": "WireMock Admin Near Misses API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The WireMock Admin REST API provides programmatic control over a running WireMock server instance. It supports creating, updating, and deleting stub mappings; querying the request journal; recording and replaying real API traffic; managing stateful scenarios; and performing system operations such as reset and shutdown. Available under the /__admin/ path prefix on any running WireMock instance.\n\nContact Support:\n Name: WireMock Community",
+      "type": "text/plain"
+    }
+  }
+}

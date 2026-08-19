@@ -1,0 +1,59 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "WireMock Admin Near Misses API",
+    "version": "2.35.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Near Misses",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /__admin/requests/unmatched/near-misses",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/__admin/requests/unmatched/near-misses"
+          },
+          "docs": "Retrieve near-misses for all unmatched requests"
+        },
+        {
+          "info": {
+            "name": "Find Near Misses Matching Specific Request",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8080/__admin/near-misses/request",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Find at most 3 near misses for closest stub mappings to the specified request"
+        },
+        {
+          "info": {
+            "name": "Find Near Misses Matching Request Pattern",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8080/__admin/near-misses/request-pattern",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Find at most 3 near misses for closest logged requests to the specified request pattern"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

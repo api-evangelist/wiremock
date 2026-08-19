@@ -1,0 +1,193 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "WireMock Admin Near Misses Stub Mappings API",
+    "version": "2.35.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Stub Mappings",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get All Stub Mappings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/__admin/mappings",
+            "params": [
+              {
+                "name": "limit",
+                "value": "10",
+                "type": "query",
+                "description": "The maximum number of results to return"
+              },
+              {
+                "name": "offset",
+                "value": "0",
+                "type": "query",
+                "description": "The start index of the results to return"
+              }
+            ]
+          },
+          "docs": "Get All Stub Mappings"
+        },
+        {
+          "info": {
+            "name": "Create a New Stub Mapping",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8080/__admin/mappings",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a New Stub Mapping"
+        },
+        {
+          "info": {
+            "name": "Delete All Stub Mappings",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://localhost:8080/__admin/mappings"
+          },
+          "docs": "Delete All Stub Mappings"
+        },
+        {
+          "info": {
+            "name": "Reset Stub Mappings",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8080/__admin/mappings/reset"
+          },
+          "docs": "Restores stub mappings to the defaults defined back in the backing store"
+        },
+        {
+          "info": {
+            "name": "Persist Stub Mappings",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8080/__admin/mappings/save"
+          },
+          "docs": "Save all persistent stub mappings to the backing store"
+        },
+        {
+          "info": {
+            "name": "Import Stub Mappings",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8080/__admin/mappings/import"
+          },
+          "docs": "Import given stub mappings to the backing store"
+        },
+        {
+          "info": {
+            "name": "Get Stub Mapping by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/__admin/mappings/:stubMappingId",
+            "params": [
+              {
+                "name": "stubMappingId",
+                "value": "730d3e32-d098-4169-a20c-554c3bedce58",
+                "type": "path",
+                "description": "The UUID of stub mapping"
+              }
+            ]
+          },
+          "docs": "Get Stub Mapping by ID"
+        },
+        {
+          "info": {
+            "name": "Update a Stub Mapping",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://localhost:8080/__admin/mappings/:stubMappingId",
+            "params": [
+              {
+                "name": "stubMappingId",
+                "value": "730d3e32-d098-4169-a20c-554c3bedce58",
+                "type": "path",
+                "description": "The UUID of stub mapping"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a Stub Mapping"
+        },
+        {
+          "info": {
+            "name": "Delete a Stub Mapping",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://localhost:8080/__admin/mappings/:stubMappingId",
+            "params": [
+              {
+                "name": "stubMappingId",
+                "value": "730d3e32-d098-4169-a20c-554c3bedce58",
+                "type": "path",
+                "description": "The UUID of stub mapping"
+              }
+            ]
+          },
+          "docs": "Delete a Stub Mapping"
+        },
+        {
+          "info": {
+            "name": "POST /__admin/mappings/find-by-metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8080/__admin/mappings/find-by-metadata",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Find stubs by matching on their metadata"
+        },
+        {
+          "info": {
+            "name": "Delete Stub Mappings Matching Metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8080/__admin/mappings/remove-by-metadata",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Delete Stub Mappings Matching Metadata"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
