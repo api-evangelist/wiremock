@@ -34,6 +34,13 @@ accessModel:
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/wiremock.png
 tags:
   - API Mocking
+  - Mock Servers
+  - Mocking
+  - Platform
+  - Stubs
+  - Testing
+tags_raw:
+  - API Mocking
   - Mock Server
   - Mocking
   - Platform
@@ -83,6 +90,8 @@ apis:
   humanURL: https://wiremock.org/docs/standalone/admin-api-reference/
   baseURL: http://localhost:8080
   tags:
+  - Recording
+  tags_raw:
   - Recordings
   properties:
   - type: OpenAPI
