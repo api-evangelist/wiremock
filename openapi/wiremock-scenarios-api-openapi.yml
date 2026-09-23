@@ -1,6 +1,6 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: WireMock Admin Near Misses Scenarios API
+  title: WireMock Admin Scenarios API
   description: The WireMock Admin REST API provides programmatic control over a running WireMock server instance. It supports creating, updating, and deleting stub mappings; querying the request journal; recording and replaying real API traffic; managing stateful scenarios; and performing system operations such as reset and shutdown. Available under the /__admin/ path prefix on any running WireMock instance.
   version: 2.35.0
   contact:
@@ -33,6 +33,8 @@ paths:
                     items:
                       $ref: schemas/scenario.yaml
           description: All scenarios
+      operationId: getAdminScenarios
+      x-operation-id-source: derived
   /__admin/scenarios/reset:
     post:
       summary: Reset the State of All Scenarios
@@ -41,6 +43,8 @@ paths:
       responses:
         '200':
           description: Successfully reset
+      operationId: postAdminScenariosReset
+      x-operation-id-source: derived
 externalDocs:
   description: WireMock User Documentation
   url: https://wiremock.org/docs/

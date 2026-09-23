@@ -1,4 +1,4 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   title: WireMock Admin Near Misses API
   description: The WireMock Admin REST API provides programmatic control over a running WireMock server instance. It supports creating, updating, and deleting stub mappings; querying the request journal; recording and replaying real API traffic; managing stateful scenarios; and performing system operations such as reset and shutdown. Available under the /__admin/ path prefix on any running WireMock instance.
@@ -24,6 +24,10 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/nearMisses'
+      summary: Get admin requests unmatched near misses
+      x-summary-source: derived
+      operationId: getAdminRequestsUnmatchedNearMisses
+      x-operation-id-source: derived
   /__admin/near-misses/request:
     post:
       summary: Find Near Misses Matching Specific Request
@@ -41,6 +45,8 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/nearMisses'
+      operationId: postAdminNearMissesRequest
+      x-operation-id-source: derived
   /__admin/near-misses/request-pattern:
     post:
       summary: Find Near Misses Matching Request Pattern
@@ -52,6 +58,8 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/nearMisses'
+      operationId: postAdminNearMissesRequestPattern
+      x-operation-id-source: derived
 components:
   requestBodies:
     requestPattern:
