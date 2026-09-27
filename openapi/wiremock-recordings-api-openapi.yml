@@ -88,24 +88,6 @@ paths:
       x-operation-id-source: derived
 components:
   requestBodies:
-    startRecording:
-      required: true
-      content:
-        application/json:
-          schema:
-            allOf:
-            - $ref: schemas/record-spec.yaml
-            - properties:
-                filters:
-                  allOf:
-                  - $ref: schemas/request-pattern.yaml
-                  - description: Filter requests for which to create stub mapping
-                targetBaseUrl:
-                  type: string
-                  description: Target URL when using the record and playback API
-                  example: http://examples.wiremockapi.cloud/
-          example:
-            $ref: examples/record-spec.yaml
     snapshotRecording:
       required: true
       content:
@@ -128,6 +110,24 @@ components:
                   - $ref: schemas/request-pattern.yaml
           example:
             $ref: examples/snapshot-spec.yaml
+    startRecording:
+      required: true
+      content:
+        application/json:
+          schema:
+            allOf:
+            - $ref: schemas/record-spec.yaml
+            - properties:
+                filters:
+                  allOf:
+                  - $ref: schemas/request-pattern.yaml
+                  - description: Filter requests for which to create stub mapping
+                targetBaseUrl:
+                  type: string
+                  description: Target URL when using the record and playback API
+                  example: http://examples.wiremockapi.cloud/
+          example:
+            $ref: examples/record-spec.yaml
 externalDocs:
   description: WireMock User Documentation
   url: https://wiremock.org/docs/

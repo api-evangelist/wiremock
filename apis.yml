@@ -8,16 +8,21 @@ description: >-
   JavaScript, .NET, Go, PHP, and Kotlin clients.
 type: Index
 deliveryModel:
-  model: unknown
-  open_source: unknown
+  model: self-hosted
+  license: Apache-2.0
+  license_evidence:
+    repo: wiremock/wiremock
+    spdx: Apache-2.0
+    stars: 7382
+  open_source: true
   commercial: false
   callable_host: false
-  label: Delivery model not determined — needs a product licence on record
-  confidence: low
+  label: Self-hosted open source · you run it yourself
+  confidence: medium
   source:
   - openapi
-  - repository-unlicensed
-  generated: '2026-08-28'
+  - repository-license
+  generated: '2026-09-25'
   method: derived
 accessModel:
   pricing: freemium
