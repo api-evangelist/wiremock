@@ -188,6 +188,14 @@ paths:
       operationId: postAdminMappingsRemoveByMetadata
       x-operation-id-source: derived
 components:
+  requestBodies:
+    stubMapping:
+      content:
+        application/json:
+          schema:
+            $ref: schemas/stub-mapping.yaml
+          example:
+            $ref: examples/stub-mapping-no-id.yaml
   responses:
     stubMapping:
       description: The stub mapping
@@ -197,14 +205,6 @@ components:
             $ref: schemas/stub-mapping.yaml
           example:
             $ref: examples/stub-mapping-with-id.yaml
-  requestBodies:
-    stubMapping:
-      content:
-        application/json:
-          schema:
-            $ref: schemas/stub-mapping.yaml
-          example:
-            $ref: examples/stub-mapping-no-id.yaml
 externalDocs:
   description: WireMock User Documentation
   url: https://wiremock.org/docs/
