@@ -242,6 +242,9 @@ apis:
     url: >-
       https://raw.githubusercontent.com/api-evangelist/wiremock/refs/heads/main/examples/wiremock-scenario-stub-example.json
 common:
+  - type: CapabilityMap
+    url: capabilities/wiremock-capability-edges.yml
+    name: WireMock Business Capability Map
   - type: AgenticAccess
     url: agentic-access/wiremock-agentic-access.yml
   - type: DomainSecurity
