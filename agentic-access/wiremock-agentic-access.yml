@@ -1,307 +1,25 @@
-generated: '2026-07-15'
+generated: '2026-09-23'
 method: generated
-source: openapi/wiremock-admin-api-openapi.yml
+source: openapi/wiremock-near-misses-api-openapi.yml, openapi/wiremock-recordings-api-openapi.yml,
+  openapi/wiremock-requests-api-openapi.yml, openapi/wiremock-scenarios-api-openapi.yml, openapi/wiremock-stub-mappings-api-openapi.yml,
+  openapi/wiremock-system-api-openapi.yml
 description: Recommended x-agentic-access execution contracts, classified heuristically from
   the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
   audience per deployment. See research/curity/agentic-governance/.
 summary:
   operations: 33
   by_action_class:
-    connected: 8
-    acting: 25
+    connected: 12
+    acting: 21
   by_consequence:
-    read: 8
-    write: 19
+    read: 12
+    write: 15
     safety-critical: 6
   human_in_the_loop_required: 6
 operations:
-- path: /__admin/mappings
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /__admin/mappings
-  method: post
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /__admin/mappings
-  method: delete
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /__admin/mappings/reset
-  method: post
-  x-agentic-access:
-    action-class: acting
-    consequence: safety-critical
-    subject: required
-    audience: null
-    token:
-      max-ttl: 120
-      exchange: true
-      purpose-required: true
-      proof-of-possession: true
-    escalation:
-      human-in-the-loop: required
-    audit: required
-- path: /__admin/mappings/save
-  method: post
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /__admin/mappings/import
-  method: post
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /__admin/mappings/{stubMappingId}
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /__admin/mappings/{stubMappingId}
-  method: put
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /__admin/mappings/{stubMappingId}
-  method: delete
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /__admin/mappings/find-by-metadata
-  method: post
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /__admin/mappings/remove-by-metadata
-  method: post
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /__admin/requests
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /__admin/requests
-  method: delete
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /__admin/requests/{requestId}
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /__admin/requests/{requestId}
-  method: delete
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /__admin/requests/reset
-  method: post
-  x-agentic-access:
-    action-class: acting
-    consequence: safety-critical
-    subject: required
-    audience: null
-    token:
-      max-ttl: 120
-      exchange: true
-      purpose-required: true
-      proof-of-possession: true
-    escalation:
-      human-in-the-loop: required
-    audit: required
-- path: /__admin/requests/count
-  method: post
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /__admin/requests/remove
-  method: post
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /__admin/requests/remove-by-metadata
-  method: post
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /__admin/requests/find
-  method: post
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /__admin/requests/unmatched
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
 - path: /__admin/requests/unmatched/near-misses
   method: get
+  operationId: getAdminRequestsUnmatchedNearMisses
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -311,36 +29,27 @@ operations:
     audit: none
 - path: /__admin/near-misses/request
   method: post
+  operationId: postAdminNearMissesRequest
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /__admin/near-misses/request-pattern
   method: post
+  operationId: postAdminNearMissesRequestPattern
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /__admin/recordings/start
   method: post
+  operationId: postAdminRecordingsStart
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -356,6 +65,7 @@ operations:
     audit: required
 - path: /__admin/recordings/stop
   method: post
+  operationId: postAdminRecordingsStop
   x-agentic-access:
     action-class: acting
     consequence: safety-critical
@@ -371,6 +81,7 @@ operations:
     audit: required
 - path: /__admin/recordings/status
   method: get
+  operationId: getAdminRecordingsStatus
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -380,6 +91,7 @@ operations:
     audit: none
 - path: /__admin/recordings/snapshot
   method: post
+  operationId: postAdminRecordingsSnapshot
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -393,8 +105,9 @@ operations:
       - abnormal
       - high-value
     audit: required
-- path: /__admin/scenarios
+- path: /__admin/requests
   method: get
+  operationId: getAdminRequests
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -402,8 +115,51 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /__admin/scenarios/reset
+- path: /__admin/requests
+  method: delete
+  operationId: deleteAdminRequests
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /__admin/requests/{requestId}
+  method: get
+  operationId: getAdminRequestsByRequestId
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /__admin/requests/{requestId}
+  method: delete
+  operationId: deleteAdminRequestsByRequestId
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /__admin/requests/reset
   method: post
+  operationId: postAdminRequestsReset
   x-agentic-access:
     action-class: acting
     consequence: safety-critical
@@ -417,8 +173,261 @@ operations:
     escalation:
       human-in-the-loop: required
     audit: required
+- path: /__admin/requests/count
+  method: post
+  operationId: postAdminRequestsCount
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /__admin/requests/remove
+  method: post
+  operationId: postAdminRequestsRemove
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /__admin/requests/remove-by-metadata
+  method: post
+  operationId: postAdminRequestsRemoveByMetadata
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /__admin/requests/find
+  method: post
+  operationId: postAdminRequestsFind
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /__admin/requests/unmatched
+  method: get
+  operationId: getAdminRequestsUnmatched
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /__admin/scenarios
+  method: get
+  operationId: getAdminScenarios
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /__admin/scenarios/reset
+  method: post
+  operationId: postAdminScenariosReset
+  x-agentic-access:
+    action-class: acting
+    consequence: safety-critical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 120
+      exchange: true
+      purpose-required: true
+      proof-of-possession: true
+    escalation:
+      human-in-the-loop: required
+    audit: required
+- path: /__admin/mappings
+  method: get
+  operationId: getAdminMappings
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /__admin/mappings
+  method: post
+  operationId: postAdminMappings
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /__admin/mappings
+  method: delete
+  operationId: deleteAdminMappings
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /__admin/mappings/reset
+  method: post
+  operationId: postAdminMappingsReset
+  x-agentic-access:
+    action-class: acting
+    consequence: safety-critical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 120
+      exchange: true
+      purpose-required: true
+      proof-of-possession: true
+    escalation:
+      human-in-the-loop: required
+    audit: required
+- path: /__admin/mappings/save
+  method: post
+  operationId: postAdminMappingsSave
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /__admin/mappings/import
+  method: post
+  operationId: postAdminMappingsImport
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /__admin/mappings/{stubMappingId}
+  method: get
+  operationId: getAdminMappingsByStubMappingId
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /__admin/mappings/{stubMappingId}
+  method: put
+  operationId: putAdminMappingsByStubMappingId
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /__admin/mappings/{stubMappingId}
+  method: delete
+  operationId: deleteAdminMappingsByStubMappingId
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /__admin/mappings/find-by-metadata
+  method: post
+  operationId: postAdminMappingsFindByMetadata
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /__admin/mappings/remove-by-metadata
+  method: post
+  operationId: postAdminMappingsRemoveByMetadata
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
 - path: /__admin/settings
   method: post
+  operationId: postAdminSettings
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -434,6 +443,7 @@ operations:
     audit: required
 - path: /__admin/reset
   method: post
+  operationId: postAdminReset
   x-agentic-access:
     action-class: acting
     consequence: safety-critical
@@ -449,6 +459,7 @@ operations:
     audit: required
 - path: /__admin/shutdown
   method: post
+  operationId: postAdminShutdown
   x-agentic-access:
     action-class: acting
     consequence: safety-critical
