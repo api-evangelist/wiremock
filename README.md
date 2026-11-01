@@ -1,4 +1,4 @@
-# WireMock (wiremock)
+# WireMock
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,80 +66,162 @@
 
 WireMock is an open source tool for mocking HTTP services and APIs. It enables developers to build stable, predictable development environments by creating mock APIs that simulate the behavior of real services. WireMock provides a comprehensive admin API for managing stub mappings, recording real traffic, verifying requests, and modeling stateful behavior through scenarios. The project is governed by the WireMock community on GitHub and supports Java, Python, JavaScript, .NET, Go, PHP, and Kotlin clients.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/wiremock/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/wiremock/refs/heads/main/apis.yml)
+**Areas:** API Mocking · Mock Servers · Mocking · Platform · Stubs · Testing
 
-## Scope
+## WireMock on APIs.io
 
-- **Type:** Index
-- **Position:** Consumer
-- **Access:** 3rd-Party
+Everything profiled for WireMock is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/wiremock/](https://apis.io/providers/wiremock/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (6)
 
-- API Mocking
-- Mock Server
-- Mocking
-- Platform
-- Stubs
-- Testing
+- [WireMock Near Misses API](https://apis.io/apis/wiremock/wiremock-near-misses-api/) — Near misses allow querying of received requests or request patterns according to similarity
+- [WireMock Recordings API](https://apis.io/apis/wiremock/wiremock-recordings-api/) — Stub mapping record and snapshot functions
+- [WireMock Requests API](https://apis.io/apis/wiremock/wiremock-requests-api/) — Logged requests and responses received by the mock service
+- [WireMock Scenarios API](https://apis.io/apis/wiremock/wiremock-scenarios-api/) — Scenarios support modelling of stateful behaviour
+- [WireMock Stub Mappings API](https://apis.io/apis/wiremock/wiremock-stub-mappings-api/) — Operations on stub mappings
+- [WireMock System API](https://apis.io/apis/wiremock/wiremock-system-api/) — Global operations
 
-## Timestamps
+### Published properties
 
-- **Created:** 2025-01-08
-- **Modified:** 2026-05-19
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### Agentic access (1)
 
-### WireMock Admin API
+Which operations an agent can call, which act, and which need a human in the loop.
 
-The WireMock Admin REST API provides programmatic control over a running WireMock server instance. It supports creating, updating, and deleting stub mappings; querying the request journal; recording and replaying real API traffic; managing stateful scenarios; and performing system operations such as reset and shutdown. The API is described in OpenAPI 3.0 and available under the /__admin/ path prefix on any running WireMock instance.
+- [Wiremock Agentic Access](https://apis.io/agentic-access/wiremock/wiremock-agentic-access/)
 
-- **Human URL:** [https://wiremock.org/docs/standalone/admin-api-reference/](https://wiremock.org/docs/standalone/admin-api-reference/)
-- **Base URL:** `http://localhost:8080`
+#### JSON Schema (1)
 
-#### Tags
+The data models the API reads and writes.
 
-- Admin API
-- API Mocking
-- Mock Server
-- Stub Management
-- Testing
+- [Stub Mapping](https://apis.io/schemas/wiremock/wiremock-stub-mapping/)
 
-#### Properties
+#### JSON Structure (1)
 
-- [Documentation](https://wiremock.org/docs/standalone/admin-api-reference/)
-- [OpenAPI](https://raw.githubusercontent.com/api-evangelist/wiremock/refs/heads/main/openapi/wiremock-admin-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Rules](https://raw.githubusercontent.com/api-evangelist/wiremock/refs/heads/main/rules/wiremock-rules.yml)
-- [Capabilities](https://raw.githubusercontent.com/api-evangelist/wiremock/refs/heads/main/capabilities/api-mocking-and-testing.yaml)
-- [JSON Schema](https://raw.githubusercontent.com/api-evangelist/wiremock/refs/heads/main/json-schema/wiremock-stub-mapping-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Structure](https://raw.githubusercontent.com/api-evangelist/wiremock/refs/heads/main/json-structure/wiremock-stub-mapping-structure.json)
-- [Example](https://raw.githubusercontent.com/api-evangelist/wiremock/refs/heads/main/examples/wiremock-create-stub-mapping-example.json)
-- [Example](https://raw.githubusercontent.com/api-evangelist/wiremock/refs/heads/main/examples/wiremock-scenario-stub-example.json)
-- [Postman Collection](collections/wiremock-admin-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/wiremock-admin-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Data models expressed in JSON Structure.
 
-## Common Properties
+- [Wiremock Stub Mapping Structure](https://apis.io/json-structure/wiremock/wiremock-stub-mapping-structure/)
 
-- [LinkedIn](https://www.linkedin.com/company/wiremock)
+#### JSON-LD (1)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [Wiremock Context](https://apis.io/jsonld/wiremock/wiremock-context/)
+
+#### Vocabulary (1)
+
+The provider's domain terms, defined.
+
+- [WireMock Vocabulary](https://apis.io/vocabularies/wiremock/wiremock-vocabulary/)
+
+#### Examples (2)
+
+Example requests and responses.
+
+- [Wiremock Create Stub Mapping Example](https://apis.io/examples/wiremock/wiremock-create-stub-mapping-example/)
+- [Wiremock Scenario Stub Example](https://apis.io/examples/wiremock/wiremock-scenario-stub-example/)
+
+#### Collections (7)
+
+Postman and Open Collection request collections.
+
+- [WireMock Admin API](https://apis.io/collections/wiremock/open-wiremock-admin-api/)
+- [WireMock Admin Near Misses API](https://apis.io/collections/wiremock/open-wiremock-near-misses-api/)
+- [WireMock Admin Near Misses Recordings API](https://apis.io/collections/wiremock/open-wiremock-recordings-api/)
+- [WireMock Admin Near Misses Requests API](https://apis.io/collections/wiremock/open-wiremock-requests-api/)
+- [WireMock Admin Near Misses Scenarios API](https://apis.io/collections/wiremock/open-wiremock-scenarios-api/)
+- [WireMock Admin Near Misses Stub Mappings API](https://apis.io/collections/wiremock/open-wiremock-stub-mappings-api/)
+- [WireMock Admin Near Misses System API](https://apis.io/collections/wiremock/open-wiremock-system-api/)
+
+#### Governance rules (2)
+
+Spectral rulesets for the provider's contracts.
+
+- [WireMock — jsonschema rules](https://apis.io/rules/wiremock/wiremock-jsonschema-spectral-rules/)
+- [WireMock API Rules](https://apis.io/rules/wiremock/wiremock-rules/)
+
+#### Security (1)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Wiremock Domain Security](https://apis.io/security/wiremock/wiremock-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Wiremock Plans Pricing](https://apis.io/plans/wiremock/wiremock-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Wiremock Rate Limits](https://apis.io/rate-limits/wiremock/wiremock-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Wiremock Finops](https://apis.io/finops/wiremock/wiremock-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
 - [Website](https://wiremock.org/)
 - [Documentation](https://wiremock.org/docs/)
-- [Reference](https://wiremock.org/docs/standalone/admin-api-reference/)
-- [GitHub Repository](https://github.com/wiremock/wiremock)
-- [GitHub Organization](https://github.com/wiremock)
-- [SDK](https://github.com/wiremock/python-wiremock)
-- [SDK](https://github.com/wiremock/wiremock-js)
-- [SDK](https://github.com/wiremock/WireMock.Net)
-- [SDK](https://github.com/wiremock/go-wiremock)
-- [SDK](https://github.com/wiremock/wiremock-php)
-- [SDK](https://github.com/wiremock/kotlin-wiremock)
-- [Docker](https://github.com/wiremock/wiremock-docker)
-- [Helm Chart](https://github.com/wiremock/helm-charts)
-- [SDK](https://github.com/wiremock/wiremock-npm)
-- [J S O N L D Context](https://raw.githubusercontent.com/api-evangelist/wiremock/refs/heads/main/json-ld/wiremock-context.jsonld)
-- [Vocabulary](https://raw.githubusercontent.com/api-evangelist/wiremock/refs/heads/main/vocabulary/wiremock-vocabulary.yml)
-- [L L Ms Txt](https://wiremock.org/llms.txt)
+- [GitHub](https://github.com/wiremock)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 30.5** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 64.3 |
+| Contract quality | 48.9 |
+| Contract governance | 27.3 |
+| Operational transparency | 13.2 |
+| Developer ergonomics | 33.3 |
+| Access clarity | 7.9 |
+
+**Agent readiness 17.9** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | — |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | partial |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 10.8** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/wiremock/](https://apis.io/providers/wiremock/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for WireMock: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/wiremock/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
